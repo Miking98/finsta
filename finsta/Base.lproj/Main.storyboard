@@ -155,7 +155,7 @@
                         <outlet property="passwordTextField" destination="zcq-xN-Pmd" id="Xfw-cE-VIR"/>
                         <outlet property="signupButton" destination="yZG-Ul-t1L" id="hRr-ub-kbp"/>
                         <outlet property="usernameTextField" destination="L7j-eO-hfk" id="Elr-fM-rgE"/>
-                        <segue destination="KXK-Zl-L0c" kind="show" identifier="signedUpSegue" id="ThQ-MI-bbn"/>
+                        <segue destination="iD9-Q5-Z91" kind="show" identifier="signedUpSegue" id="ThQ-MI-bbn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -285,14 +285,33 @@
                     <connections>
                         <outlet property="passwordTextField" destination="aVb-Uy-JDh" id="EJe-p7-xUj"/>
                         <outlet property="usernameTextField" destination="u82-2k-1mm" id="prN-gi-dy6"/>
-                        <segue destination="KXK-Zl-L0c" kind="show" identifier="loggedInSegue" id="gA2-q9-WLf"/>
+                        <segue destination="iD9-Q5-Z91" kind="show" identifier="loggedInSegue" id="gA2-q9-WLf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KqW-oV-GKp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="33" y="815"/>
         </scene>
-        <!--Home View Controller-->
+        <!--Camera-->
+        <scene sceneID="sPb-pL-JkA">
+            <objects>
+                <viewController id="hun-DS-PU4" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="F8q-lg-Dhr"/>
+                        <viewControllerLayoutGuide type="bottom" id="9oa-xc-QI1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="alW-Wz-gC8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Camera" id="cNm-MK-rDV"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pM0-TT-DYh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2084" y="-330"/>
+        </scene>
+        <!--Home-->
         <scene sceneID="fo3-BJ-GEb">
             <objects>
                 <viewController storyboardIdentifier="homeViewController" id="KXK-Zl-L0c" customClass="homeViewController" customModule="finsta" customModuleProvider="target" sceneMemberID="viewController">
@@ -314,13 +333,52 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Home" id="HSg-0G-RfG"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bTC-2Q-8nY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2084" y="422.33883058470769"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="M1D-FD-XiR">
+            <objects>
+                <viewController id="FqX-A0-C7v" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="txq-XA-cbK"/>
+                        <viewControllerLayoutGuide type="bottom" id="s2g-Eo-uiK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QWf-A2-lWd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Profile" id="Ujc-vY-1F3"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6aU-LB-osi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2084" y="1192"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="oAq-Vl-mQQ">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="iD9-Q5-Z91" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="fdi-Ka-LIy">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="KXK-Zl-L0c" kind="relationship" relationship="viewControllers" id="aYs-F5-D6e"/>
+                        <segue destination="FqX-A0-C7v" kind="relationship" relationship="viewControllers" id="Els-PV-T2r"/>
+                        <segue destination="hun-DS-PU4" kind="relationship" relationship="viewControllers" id="oi2-vU-fNt"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="15O-zm-XfG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1144.8" y="422.33883058470769"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ThQ-MI-bbn"/>
+        <segue reference="gA2-q9-WLf"/>
     </inferredMetricsTieBreakers>
 </document>
