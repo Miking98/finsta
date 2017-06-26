@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18353181D2DBCD80970AED29 /* Pods_finsta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A45FCDB2134351AF8403287A /* Pods_finsta.framework */; };
+		4E099B19C543C621C6F5F0AA /* Pods_finstaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B4AF2A857EA7C462D9A3A1 /* Pods_finstaTests.framework */; };
+		7E8DECB286D522BD6471F79E /* Pods_finstaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41ABCBB83F86D4BB66EA10E6 /* Pods_finstaUITests.framework */; };
 		920E63151F017AF800192B5C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920E63141F017AF800192B5C /* AppDelegate.swift */; };
-		920E63171F017AF800192B5C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920E63161F017AF800192B5C /* ViewController.swift */; };
+		920E63171F017AF800192B5C /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920E63161F017AF800192B5C /* loginViewController.swift */; };
 		920E631A1F017AF800192B5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 920E63181F017AF800192B5C /* Main.storyboard */; };
 		920E631C1F017AF800192B5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 920E631B1F017AF800192B5C /* Assets.xcassets */; };
 		920E631F1F017AF800192B5C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 920E631D1F017AF800192B5C /* LaunchScreen.storyboard */; };
@@ -34,9 +37,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0FF5D213B496B5C33C14E2F3 /* Pods-finstaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-finstaUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-finstaUITests/Pods-finstaUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		1D9DACA33215B2379CC6B416 /* Pods-finstaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-finstaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-finstaTests/Pods-finstaTests.release.xcconfig"; sourceTree = "<group>"; };
+		28B4AF2A857EA7C462D9A3A1 /* Pods_finstaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_finstaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		41ABCBB83F86D4BB66EA10E6 /* Pods_finstaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_finstaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		41AFB30F521A35C6A3F1D3B8 /* Pods-finsta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-finsta.debug.xcconfig"; path = "Pods/Target Support Files/Pods-finsta/Pods-finsta.debug.xcconfig"; sourceTree = "<group>"; };
+		79AB9A77C1EF8F1BD5333598 /* Pods-finstaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-finstaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-finstaTests/Pods-finstaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		920E63111F017AF800192B5C /* finsta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = finsta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		920E63141F017AF800192B5C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		920E63161F017AF800192B5C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		920E63161F017AF800192B5C /* loginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
 		920E63191F017AF800192B5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		920E631B1F017AF800192B5C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		920E631E1F017AF800192B5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +56,9 @@
 		920E63301F017AF900192B5C /* finstaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = finstaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		920E63341F017AF900192B5C /* finstaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = finstaUITests.swift; sourceTree = "<group>"; };
 		920E63361F017AF900192B5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A45FCDB2134351AF8403287A /* Pods_finsta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_finsta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DEDB56973C8E2DF04A708CBD /* Pods-finstaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-finstaUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-finstaUITests/Pods-finstaUITests.release.xcconfig"; sourceTree = "<group>"; };
+		F3A6EA629871AF997FDD8C9D /* Pods-finsta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-finsta.release.xcconfig"; path = "Pods/Target Support Files/Pods-finsta/Pods-finsta.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18353181D2DBCD80970AED29 /* Pods_finsta.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E099B19C543C621C6F5F0AA /* Pods_finstaTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,12 +82,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E8DECB286D522BD6471F79E /* Pods_finstaUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7EED9B564DC476FE99483466 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				41AFB30F521A35C6A3F1D3B8 /* Pods-finsta.debug.xcconfig */,
+				F3A6EA629871AF997FDD8C9D /* Pods-finsta.release.xcconfig */,
+				79AB9A77C1EF8F1BD5333598 /* Pods-finstaTests.debug.xcconfig */,
+				1D9DACA33215B2379CC6B416 /* Pods-finstaTests.release.xcconfig */,
+				0FF5D213B496B5C33C14E2F3 /* Pods-finstaUITests.debug.xcconfig */,
+				DEDB56973C8E2DF04A708CBD /* Pods-finstaUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		920E63081F017AF800192B5C = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +109,8 @@
 				920E63281F017AF900192B5C /* finstaTests */,
 				920E63331F017AF900192B5C /* finstaUITests */,
 				920E63121F017AF800192B5C /* Products */,
+				7EED9B564DC476FE99483466 /* Pods */,
+				EDE905F056ACA62C34F97FB8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,7 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				920E63141F017AF800192B5C /* AppDelegate.swift */,
-				920E63161F017AF800192B5C /* ViewController.swift */,
+				920E63161F017AF800192B5C /* loginViewController.swift */,
 				920E63181F017AF800192B5C /* Main.storyboard */,
 				920E631B1F017AF800192B5C /* Assets.xcassets */,
 				920E631D1F017AF800192B5C /* LaunchScreen.storyboard */,
@@ -125,6 +155,16 @@
 			path = finstaUITests;
 			sourceTree = "<group>";
 		};
+		EDE905F056ACA62C34F97FB8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A45FCDB2134351AF8403287A /* Pods_finsta.framework */,
+				28B4AF2A857EA7C462D9A3A1 /* Pods_finstaTests.framework */,
+				41ABCBB83F86D4BB66EA10E6 /* Pods_finstaUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +172,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 920E63391F017AF900192B5C /* Build configuration list for PBXNativeTarget "finsta" */;
 			buildPhases = (
+				049E9BE0892CC3F6BE58BFBE /* [CP] Check Pods Manifest.lock */,
 				920E630D1F017AF800192B5C /* Sources */,
 				920E630E1F017AF800192B5C /* Frameworks */,
 				920E630F1F017AF800192B5C /* Resources */,
+				1639E121B06AD5683E8F9104 /* [CP] Embed Pods Frameworks */,
+				951FE26504055294608363D2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -149,9 +192,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 920E633C1F017AF900192B5C /* Build configuration list for PBXNativeTarget "finstaTests" */;
 			buildPhases = (
+				DE9AE51BB8F4ADC345FC7789 /* [CP] Check Pods Manifest.lock */,
 				920E63211F017AF900192B5C /* Sources */,
 				920E63221F017AF900192B5C /* Frameworks */,
 				920E63231F017AF900192B5C /* Resources */,
+				CB8FFBFC964734225D0BF8E1 /* [CP] Embed Pods Frameworks */,
+				445A55EA419B9FBEECF3FF1B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -167,9 +213,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 920E633F1F017AF900192B5C /* Build configuration list for PBXNativeTarget "finstaUITests" */;
 			buildPhases = (
+				E692A4EB54F6AFBEF5C1C0B0 /* [CP] Check Pods Manifest.lock */,
 				920E632C1F017AF900192B5C /* Sources */,
 				920E632D1F017AF900192B5C /* Frameworks */,
 				920E632E1F017AF900192B5C /* Resources */,
+				FA520A2EFF6EA09C2ABBDF01 /* [CP] Embed Pods Frameworks */,
+				6F844A303772E935E6AB9AC3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -254,12 +303,150 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		049E9BE0892CC3F6BE58BFBE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		1639E121B06AD5683E8F9104 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-finsta/Pods-finsta-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		445A55EA419B9FBEECF3FF1B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-finstaTests/Pods-finstaTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6F844A303772E935E6AB9AC3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-finstaUITests/Pods-finstaUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		951FE26504055294608363D2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-finsta/Pods-finsta-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CB8FFBFC964734225D0BF8E1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-finstaTests/Pods-finstaTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DE9AE51BB8F4ADC345FC7789 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E692A4EB54F6AFBEF5C1C0B0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FA520A2EFF6EA09C2ABBDF01 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-finstaUITests/Pods-finstaUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		920E630D1F017AF800192B5C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				920E63171F017AF800192B5C /* ViewController.swift in Sources */,
+				920E63171F017AF800192B5C /* loginViewController.swift in Sources */,
 				920E63151F017AF800192B5C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -410,6 +597,7 @@
 		};
 		920E633A1F017AF900192B5C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 41AFB30F521A35C6A3F1D3B8 /* Pods-finsta.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = finsta/Info.plist;
@@ -422,6 +610,7 @@
 		};
 		920E633B1F017AF900192B5C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F3A6EA629871AF997FDD8C9D /* Pods-finsta.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = finsta/Info.plist;
@@ -434,6 +623,7 @@
 		};
 		920E633D1F017AF900192B5C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 79AB9A77C1EF8F1BD5333598 /* Pods-finstaTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -448,6 +638,7 @@
 		};
 		920E633E1F017AF900192B5C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1D9DACA33215B2379CC6B416 /* Pods-finstaTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -462,6 +653,7 @@
 		};
 		920E63401F017AF900192B5C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0FF5D213B496B5C33C14E2F3 /* Pods-finstaUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = finstaUITests/Info.plist;
@@ -475,6 +667,7 @@
 		};
 		920E63411F017AF900192B5C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DEDB56973C8E2DF04A708CBD /* Pods-finstaUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = finstaUITests/Info.plist;
@@ -505,6 +698,7 @@
 				920E633B1F017AF900192B5C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		920E633C1F017AF900192B5C /* Build configuration list for PBXNativeTarget "finstaTests" */ = {
 			isa = XCConfigurationList;
@@ -513,6 +707,7 @@
 				920E633E1F017AF900192B5C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		920E633F1F017AF900192B5C /* Build configuration list for PBXNativeTarget "finstaUITests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +716,7 @@
 				920E63411F017AF900192B5C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  loginViewController.swift
 //  finsta
 //
 //  Created by Michael Wornow on 6/26/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class loginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
