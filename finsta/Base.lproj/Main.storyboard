@@ -292,10 +292,10 @@
             </objects>
             <point key="canvasLocation" x="33" y="815"/>
         </scene>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="fo3-BJ-GEb">
             <objects>
-                <viewController id="KXK-Zl-L0c" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="homeViewController" id="KXK-Zl-L0c" customClass="homeViewController" customModule="finsta" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Y5o-6a-JnB"/>
                         <viewControllerLayoutGuide type="bottom" id="5gy-N5-W10"/>
@@ -303,12 +303,21 @@
                     <view key="view" contentMode="scaleToFill" id="rLh-sq-CUc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oF1-Lw-Hgj">
+                                <rect key="frame" x="166" y="47" width="46" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bTC-2Q-8nY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1146" y="423"/>
+            <point key="canvasLocation" x="1144.8" y="422.33883058470769"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

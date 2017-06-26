@@ -18,6 +18,7 @@
 		920E632A1F017AF900192B5C /* finstaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920E63291F017AF900192B5C /* finstaTests.swift */; };
 		920E63351F017AF900192B5C /* finstaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920E63341F017AF900192B5C /* finstaUITests.swift */; };
 		92948ADF1F01BD590099CDB1 /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92948ADE1F01BD590099CDB1 /* loginViewController.swift */; };
+		92948AE11F01C91A0099CDB1 /* homeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92948AE01F01C91A0099CDB1 /* homeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		920E63341F017AF900192B5C /* finstaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = finstaUITests.swift; sourceTree = "<group>"; };
 		920E63361F017AF900192B5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92948ADE1F01BD590099CDB1 /* loginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
+		92948AE01F01C91A0099CDB1 /* homeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = homeViewController.swift; sourceTree = "<group>"; };
 		A45FCDB2134351AF8403287A /* Pods_finsta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_finsta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEDB56973C8E2DF04A708CBD /* Pods-finstaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-finstaUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-finstaUITests/Pods-finstaUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F3A6EA629871AF997FDD8C9D /* Pods-finsta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-finsta.release.xcconfig"; path = "Pods/Target Support Files/Pods-finsta/Pods-finsta.release.xcconfig"; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				920E631D1F017AF800192B5C /* LaunchScreen.storyboard */,
 				920E63201F017AF800192B5C /* Info.plist */,
 				92948ADE1F01BD590099CDB1 /* loginViewController.swift */,
+				92948AE01F01C91A0099CDB1 /* homeViewController.swift */,
 			);
 			path = finsta;
 			sourceTree = "<group>";
@@ -452,6 +455,7 @@
 				920E63171F017AF800192B5C /* signupViewController.swift in Sources */,
 				920E63151F017AF800192B5C /* AppDelegate.swift in Sources */,
 				92948ADF1F01BD590099CDB1 /* loginViewController.swift in Sources */,
+				92948AE11F01C91A0099CDB1 /* homeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
