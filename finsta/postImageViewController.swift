@@ -14,11 +14,11 @@ class postImageViewController: UIViewController {
 
     @IBOutlet weak var captionTextView: UITextView!
     @IBOutlet weak var imageView: UIImageView!
-    
     @IBOutlet weak var dateCreatedLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
-    
     @IBOutlet weak var postButton: UIButton!
+    
+    @IBOutlet weak var spinnerActivityIndicatorView: UIActivityIndicatorView!
     
     var postImage: UIImage?
     var postImageAsset: PHAsset?
@@ -55,9 +55,11 @@ class postImageViewController: UIViewController {
     }
     
     @IBAction func postButtonTouch(_ sender: UIButton) {
-        let caption = captionTextView.text ?? ""
+        spinnerActivityIndicatorView.startAnimating()
         
+        let caption = captionTextView.text ?? ""
         Post.postUserImage(image: postImage, withCaption: caption) { (status: Bool, error: Error?) in
+            self.spinnerActivityIndicatorView.stopAnimating()
             // Go back to home feed
             let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = mainStoryboard.instantiateViewController(withIdentifier: "mainTabBarController") as! UITabBarController

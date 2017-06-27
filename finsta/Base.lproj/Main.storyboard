@@ -467,6 +467,11 @@
                                             <action selector="videoTabButtonTouch:" destination="hun-DS-PU4" eventType="touchUpInside" id="9VH-J6-XA9"/>
                                         </connections>
                                     </button>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="XdF-du-KlW">
+                                        <rect key="frame" x="171" y="348" width="37" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="color" cocoaTouchSystemColor="darkTextColor"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.87785760175971694" green="0.87666072409870721" blue="0.89756719559585496" alpha="0.421599911971831" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
@@ -500,6 +505,7 @@
                         <outlet property="imageView" destination="UbG-uP-k44" id="xXU-6S-Xvd"/>
                         <outlet property="locationLabel" destination="g9u-og-Cm8" id="Pg8-f8-Zdk"/>
                         <outlet property="postButton" destination="oSu-DI-H3w" id="OYn-pp-bIk"/>
+                        <outlet property="spinnerActivityIndicatorView" destination="XdF-du-KlW" id="Gkh-G2-OFe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t1u-pk-mgA" userLabel="First Responder" sceneMemberID="firstResponder"/>
