@@ -10,6 +10,7 @@
 		18353181D2DBCD80970AED29 /* Pods_finsta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A45FCDB2134351AF8403287A /* Pods_finsta.framework */; };
 		4E099B19C543C621C6F5F0AA /* Pods_finstaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B4AF2A857EA7C462D9A3A1 /* Pods_finstaTests.framework */; };
 		7E8DECB286D522BD6471F79E /* Pods_finstaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41ABCBB83F86D4BB66EA10E6 /* Pods_finstaUITests.framework */; };
+		920216891F02FB0800B11228 /* postImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920216881F02FB0800B11228 /* postImageViewController.swift */; };
 		920E63151F017AF800192B5C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920E63141F017AF800192B5C /* AppDelegate.swift */; };
 		920E63171F017AF800192B5C /* signupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920E63161F017AF800192B5C /* signupViewController.swift */; };
 		920E631A1F017AF800192B5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 920E63181F017AF800192B5C /* Main.storyboard */; };
@@ -19,6 +20,8 @@
 		92948ADF1F01BD590099CDB1 /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92948ADE1F01BD590099CDB1 /* loginViewController.swift */; };
 		92948AE11F01C91A0099CDB1 /* homeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92948AE01F01C91A0099CDB1 /* homeViewController.swift */; };
 		92948AE31F01CB420099CDB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92948AE21F01CB420099CDB1 /* Assets.xcassets */; };
+		92948AE91F01CEE20099CDB1 /* cameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92948AE81F01CEE20099CDB1 /* cameraViewController.swift */; };
+		92948AEB1F01DD590099CDB1 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92948AEA1F01DD590099CDB1 /* Post.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +48,7 @@
 		41ABCBB83F86D4BB66EA10E6 /* Pods_finstaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_finstaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		41AFB30F521A35C6A3F1D3B8 /* Pods-finsta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-finsta.debug.xcconfig"; path = "Pods/Target Support Files/Pods-finsta/Pods-finsta.debug.xcconfig"; sourceTree = "<group>"; };
 		79AB9A77C1EF8F1BD5333598 /* Pods-finstaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-finstaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-finstaTests/Pods-finstaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		920216881F02FB0800B11228 /* postImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = postImageViewController.swift; sourceTree = "<group>"; };
 		920E63111F017AF800192B5C /* finsta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = finsta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		920E63141F017AF800192B5C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		920E63161F017AF800192B5C /* signupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signupViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +64,8 @@
 		92948ADE1F01BD590099CDB1 /* loginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
 		92948AE01F01C91A0099CDB1 /* homeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = homeViewController.swift; sourceTree = "<group>"; };
 		92948AE21F01CB420099CDB1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		92948AE81F01CEE20099CDB1 /* cameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cameraViewController.swift; sourceTree = "<group>"; };
+		92948AEA1F01DD590099CDB1 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		A45FCDB2134351AF8403287A /* Pods_finsta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_finsta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEDB56973C8E2DF04A708CBD /* Pods-finstaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-finstaUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-finstaUITests/Pods-finstaUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F3A6EA629871AF997FDD8C9D /* Pods-finsta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-finsta.release.xcconfig"; path = "Pods/Target Support Files/Pods-finsta/Pods-finsta.release.xcconfig"; sourceTree = "<group>"; };
@@ -139,6 +145,9 @@
 				920E63201F017AF800192B5C /* Info.plist */,
 				92948ADE1F01BD590099CDB1 /* loginViewController.swift */,
 				92948AE01F01C91A0099CDB1 /* homeViewController.swift */,
+				92948AE81F01CEE20099CDB1 /* cameraViewController.swift */,
+				92948AEA1F01DD590099CDB1 /* Post.swift */,
+				920216881F02FB0800B11228 /* postImageViewController.swift */,
 			);
 			path = finsta;
 			sourceTree = "<group>";
@@ -453,7 +462,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				920E63171F017AF800192B5C /* signupViewController.swift in Sources */,
+				920216891F02FB0800B11228 /* postImageViewController.swift in Sources */,
 				920E63151F017AF800192B5C /* AppDelegate.swift in Sources */,
+				92948AE91F01CEE20099CDB1 /* cameraViewController.swift in Sources */,
+				92948AEB1F01DD590099CDB1 /* Post.swift in Sources */,
 				92948ADF1F01BD590099CDB1 /* loginViewController.swift in Sources */,
 				92948AE11F01C91A0099CDB1 /* homeViewController.swift in Sources */,
 			);
