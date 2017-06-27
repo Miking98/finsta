@@ -29,8 +29,18 @@ class postImageViewController: UIViewController {
         if let postImage = postImage {
             imageView.image = postImage
             if let postImageAsset = postImageAsset {
-                dateCreatedLabel.text = Post.humanReadableDateFromDate(date: postImageAsset.creationDate!)
-                locationLabel.text = Post.getGeoLocationFromCoords(location: postImageAsset.location!)
+                if postImageAsset.creationDate != nil {
+                    dateCreatedLabel.text = Post.humanReadableDateFromDate(date: postImageAsset.creationDate!)
+                }
+                else {
+                    dateCreatedLabel.text = "N/A"
+                }
+                if postImageAsset.location != nil {
+                    locationLabel.text = Post.getGeoLocationFromCoords(location: postImageAsset.location!)
+                }
+                else {
+                    locationLabel.text = "N/A"
+                }
             }
             else {
                 dateCreatedLabel.text = "N/A"
@@ -48,6 +58,10 @@ class postImageViewController: UIViewController {
         let caption = captionTextView.text ?? ""
         
         Post.postUserImage(image: postImage, withCaption: caption) { (status: Bool, error: Error?) in
+            // Go back to home feed
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = mainStoryboard.instantiateViewController(withIdentifier: "mainTabBarController") as! UITabBarController
+            self.present(vc, animated: true, completion: nil)
         }
     }
 
