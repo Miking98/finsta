@@ -36,4 +36,23 @@ class Post: AnyObject {
         }
         return nil
     }
+    
+    class func getGeoLocationFromCoords(location: CLLocation) -> String {
+        var geoLocation = ""
+        let geocoder = CLGeocoder()
+        geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
+            if let placemarks = placemarks {
+                if let placemark = placemarks.first {
+                    if placemark.locality != nil {
+                        geoLocation += placemark.locality!
+                    }
+                    if placemark.administrativeArea != nil {
+                        geoLocation += " " + placemark.administrativeArea!
+                        
+                    }
+                }
+            }
+        }
+        return geoLocation
+    }
 }

@@ -82,16 +82,21 @@ class cameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         let creationDate = asset.creationDate
         let location = asset.location
         
-        // Save image into main image view
+        // Display image and metadata to user
         selectedImageView.image = editedImage
         if creationDate != nil {
-            dateCreatedLabel.text = creationDate!.description
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MMMM d, yyyy"
+            let timeFormatter = DateFormatter()
+            timeFormatter.dateFormat = "HH:mm"
+            dateCreatedLabel.text = String(format: "%@ at %@", dateFormatter.string(from: creationDate!), timeFormatter.string(from: creationDate!))
         }
         else {
             dateCreatedLabel.text = "Date taken not recorded"
         }
         if location != nil {
-            locationLabel.text = String(format: "%d, %d", location!.coordinate.longitude,location!.coordinate.latitude)
+            let geoLocation = Post.getGeoLocationFromCoords(location: location!)
+            locationLabel.text = geoLocation
         }
         else {
             locationLabel.text = "No geolocation information"
