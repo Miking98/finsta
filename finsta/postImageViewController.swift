@@ -12,8 +12,13 @@ import Photos
 
 class postImageViewController: UIViewController {
 
-    @IBOutlet weak var captionLabel: UILabel!
+    @IBOutlet weak var captionTextView: UITextView!
     @IBOutlet weak var imageView: UIImageView!
+    
+    @IBOutlet weak var dateCreatedLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    
+    @IBOutlet weak var postButton: UIButton!
     
     var postImage: UIImage?
     var postImageAsset: PHAsset?
@@ -23,12 +28,13 @@ class postImageViewController: UIViewController {
 
         if let postImage = postImage {
             imageView.image = postImage
-            
-            
-            let caption = "asdf"
-            
-            // Do something with the images (based on your use case)
-            Post.postUserImage(image: postImage, withCaption: caption) { (status: Bool, error: Error?) in
+            if let postImageAsset = postImageAsset {
+                dateCreatedLabel.text = Post.humanReadableDateFromDate(date: postImageAsset.creationDate!)
+                locationLabel.text = Post.getGeoLocationFromCoords(location: postImageAsset.location!)
+            }
+            else {
+                dateCreatedLabel.text = "N/A"
+                locationLabel.text = "N/A"
             }
         }
     }
@@ -38,6 +44,12 @@ class postImageViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func postButtonTouch(_ sender: UIButton) {
+        let caption = captionTextView.text ?? ""
+        
+        Post.postUserImage(image: postImage, withCaption: caption) { (status: Bool, error: Error?) in
+        }
+    }
 
     /*
     // MARK: - Navigation
