@@ -10,12 +10,16 @@ import UIKit
 import Parse
 import ParseUI
 
-class homeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class homeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
     
     @IBOutlet weak var feedTableView: UITableView!
     
     var posts: [PFObject] = []
+    let NUMBER_OF_POSTS_FETCH_AT_ONCE = 1
+    
     var refreshControl: UIRefreshControl = UIRefreshControl()
+    var loadingMoreView:InfiniteScrollActivityView?
+    var feedIsLoadingMoreData = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,11 +29,21 @@ class homeViewController: UIViewController, UITableViewDelegate, UITableViewData
         feedTableView.dataSource = self
         
         // Fetch 20 most recent posts
-        fetchMostRecentPosts(numberOfPosts: 20)
+        fetchPosts(startDate: Date(), numberOfPosts: NUMBER_OF_POSTS_FETCH_AT_ONCE, completion: { (error: Error?) -> Void in
+        })
         
-        // Initialize a UIRefreshControl to fetch latest posts
+        // Attach UIRefreshControl to feedTableView
         refreshControl.addTarget(self, action: #selector(refreshControlAction), for: UIControlEvents.valueChanged)
         feedTableView.insertSubview(refreshControl, at: 0)
+        
+        // Infinite Scroll loading indicator
+        let frame = CGRect(x: 0, y: feedTableView.contentSize.height, width: feedTableView.bounds.size.width, height: InfiniteScrollActivityView.defaultHeight)
+        loadingMoreView = InfiniteScrollActivityView(frame: frame)
+        loadingMoreView!.isHidden = true
+        feedTableView.addSubview(loadingMoreView!)
+        var insets = feedTableView.contentInset
+        insets.bottom += InfiniteScrollActivityView.defaultHeight
+        feedTableView.contentInset = insets
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,8 +69,33 @@ class homeViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (!feedIsLoadingMoreData) {
+            // Calculate the position of one screen length before the bottom of the results
+            let scrollViewContentHeight = feedTableView.contentSize.height // Total height of table with all elements filled in (off screen too)
+            let scrollOffsetThreshold = scrollViewContentHeight - feedTableView.bounds.size.height // Bounds is height of table currently on screen
+                
+            // When the user has scrolled past the threshold, start requesting
+            if (scrollView.contentOffset.y > scrollOffsetThreshold && feedTableView.isDragging) { // ContentOffset is how far user has scrolled the table view
+                feedIsLoadingMoreData = true
+                // Update position of loadingMoreView, and start loading indicator
+                let frame = CGRect(x: 0, y: feedTableView.contentSize.height, width: feedTableView.bounds.size.width, height: InfiniteScrollActivityView.defaultHeight)
+                loadingMoreView?.frame = frame
+                loadingMoreView!.startAnimating()
+                //Fetch next posts
+                let mostAncientPostAlreadyFetchedDate = posts[posts.count-1].createdAt!
+                fetchPosts(startDate: mostAncientPostAlreadyFetchedDate, numberOfPosts: NUMBER_OF_POSTS_FETCH_AT_ONCE, append: true, completion: { (error: Error?) -> Void in
+                    self.feedIsLoadingMoreData = false
+                    self.loadingMoreView!.stopAnimating()
+                })
+            }
+        }
+    }
+    
     func refreshControlAction(_ refreshControl: UIRefreshControl) {
-        fetchMostRecentPosts(numberOfPosts: 20)
+        fetchPosts(startDate: Date(), numberOfPosts: NUMBER_OF_POSTS_FETCH_AT_ONCE, completion: { (error: Error?) -> Void in
+            self.refreshControl.endRefreshing()
+        })
     }
     
     func alertNetworkError() {
@@ -69,11 +108,17 @@ class homeViewController: UIViewController, UITableViewDelegate, UITableViewData
         present(alertController, animated: true){}
     }
     
-    func fetchMostRecentPosts(numberOfPosts: Int) {
-        let currentDate = Date()
-        Post.getMostRecentPosts(startDate: currentDate, numberOfPosts: numberOfPosts, completion: { (queryPosts: [PFObject]?, queryError: Error?) -> Void in
+    func fetchPosts(startDate: Date, numberOfPosts: Int, append: Bool = false, completion: @escaping (_ error: Error?) -> Void) {
+        Post.getMostRecentPosts(startDate: startDate, numberOfPosts: numberOfPosts, completion: { (queryPosts: [PFObject]?, queryError: Error?) -> Void in
             if let queryPosts = queryPosts {
-                self.posts = queryPosts
+                if append {
+                    for q in queryPosts {
+                        self.posts.append(q)
+                    }
+                }
+                else {
+                    self.posts = queryPosts
+                }
                 self.feedTableView.reloadData()
             }
             else {
@@ -83,7 +128,7 @@ class homeViewController: UIViewController, UITableViewDelegate, UITableViewData
             if (self.posts.count == 0) {
                 print("No posts")
             }
-            self.refreshControl.endRefreshing()
+            completion(queryError)
         })
     }
     
