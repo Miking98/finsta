@@ -563,7 +563,7 @@
                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <segue destination="yEZ-NC-l16" kind="show" id="5MY-qu-dyf"/>
+                                                        <segue destination="yEZ-NC-l16" kind="show" identifier="postToComments" id="nD5-WB-5XJ"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -629,7 +629,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="119" id="mtH-SY-TJF" customClass="commentsTableViewCell" customModule="finsta" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="commentsTableViewCell" rowHeight="119" id="mtH-SY-TJF" customClass="commentsTableViewCell" customModule="finsta" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="119"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mtH-SY-TJF" id="c6V-Ge-uOL">
@@ -658,7 +658,6 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="commentContentTextView" destination="gFa-1y-hB0" id="ha8-xv-a4g"/>
                                             <outlet property="contentTextView" destination="gFa-1y-hB0" id="n1H-bh-WaF"/>
                                             <outlet property="userProfileImageView" destination="Owq-GS-YDE" id="Ang-de-6Vw"/>
                                             <outlet property="usernameLabel" destination="A0y-1B-z7V" id="UZr-rf-Sfe"/>

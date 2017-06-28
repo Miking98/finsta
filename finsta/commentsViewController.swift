@@ -13,6 +13,7 @@ class commentsViewController: UIViewController, UITableViewDelegate, UITableView
 
     @IBOutlet weak var commentsTableView: UITableView!
     
+    var post: PFObject?
     var comments: [PFObject] = []
     let NUMBER_OF_COMMENTS_FETCH_AT_ONCE = 1
     
@@ -27,10 +28,6 @@ class commentsViewController: UIViewController, UITableViewDelegate, UITableView
         commentsTableView.delegate = self
         commentsTableView.dataSource = self
         
-        // Fetch 20 most recent comments
-        fetchComments(startNumber: 0, numberOfComments: NUMBER_OF_COMMENTS_FETCH_AT_ONCE, completion: { (error: Error?) -> Void in
-        })
-        
         // Attach UIRefreshControl to commentsTableView
         refreshControl.addTarget(self, action: #selector(refreshControlAction), for: UIControlEvents.valueChanged)
         commentsTableView.insertSubview(refreshControl, at: 0)
@@ -43,6 +40,13 @@ class commentsViewController: UIViewController, UITableViewDelegate, UITableView
         var insets = commentsTableView.contentInset
         insets.bottom += InfiniteScrollActivityView.defaultHeight
         commentsTableView.contentInset = insets
+        
+        // Get post information
+        if let post = post {
+            // Fetch 20 oldest comments
+            fetchComments(startNumber: 0, numberOfComments: NUMBER_OF_COMMENTS_FETCH_AT_ONCE, post: post, completion: { (error: Error?) -> Void in
+            })
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -88,7 +92,7 @@ class commentsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func refreshControlAction(_ refreshControl: UIRefreshControl) {
-        fetchComments(startNumber: 0, numberOfComments: NUMBER_OF_COMMENTS_FETCH_AT_ONCE, completion: { (error: Error?) -> Void in
+        fetchComments(startNumber: 0, numberOfComments: NUMBER_OF_COMMENTS_FETCH_AT_ONCE, post: post!, completion: { (error: Error?) -> Void in
             self.refreshControl.endRefreshing()
         })
     }
@@ -103,9 +107,30 @@ class commentsViewController: UIViewController, UITableViewDelegate, UITableView
         present(alertController, animated: true){}
     }
     
-    func fetchComments(startNumber: Int, numberOfComments: Int, append: Bool = false, completion: @escaping (_ error: Error?) -> Void) {
-        
+    func fetchComments(startNumber: Int, numberOfComments: Int, append: Bool = false, post: PFObject, completion: @escaping (_ error: Error?) -> Void) {
+        Post.getOldestComments(startNumber: startNumber, numberOfComments: numberOfComments, post: post) { (queryComments: [PFObject]?, queryError: Error?) in
+            if let queryComments = queryComments {
+                if append {
+                    for q in queryComments {
+                        self.comments.append(q)
+                    }
+                }
+                else {
+                    self.comments = queryComments
+                }
+                self.commentsTableView.reloadData()
+            }
+            else {
+                self.alertNetworkError()
+                print(queryError!.localizedDescription)
+            }
+            if (self.comments.count == 0) {
+                print("No comments")
+            }
+            completion(queryError)
+        }
     }
+    
 
     /*
     // MARK: - Navigation

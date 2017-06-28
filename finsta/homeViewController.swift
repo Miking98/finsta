@@ -28,10 +28,6 @@ class homeViewController: UIViewController, UITableViewDelegate, UITableViewData
         feedTableView.delegate = self
         feedTableView.dataSource = self
         
-        // Fetch 20 most recent posts
-        fetchPosts(startDate: Date(), numberOfPosts: NUMBER_OF_POSTS_FETCH_AT_ONCE, completion: { (error: Error?) -> Void in
-        })
-        
         // Attach UIRefreshControl to feedTableView
         refreshControl.addTarget(self, action: #selector(refreshControlAction), for: UIControlEvents.valueChanged)
         feedTableView.insertSubview(refreshControl, at: 0)
@@ -44,6 +40,10 @@ class homeViewController: UIViewController, UITableViewDelegate, UITableViewData
         var insets = feedTableView.contentInset
         insets.bottom += InfiniteScrollActivityView.defaultHeight
         feedTableView.contentInset = insets
+        
+        // Fetch 20 most recent posts
+        fetchPosts(startDate: Date(), numberOfPosts: NUMBER_OF_POSTS_FETCH_AT_ONCE, completion: { (error: Error?) -> Void in
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -131,15 +131,18 @@ class homeViewController: UIViewController, UITableViewDelegate, UITableViewData
             completion(queryError)
         })
     }
-    
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "postToComments" {
+            // Get parent Table View Cell
+            let button = sender as! UIButton
+            let view = button.superview!
+            let cell = view.superview as! feedTableViewCell
+            let post = posts[feedTableView.indexPath(for: cell)!.row]
+            
+            let vc = segue.destination as! commentsViewController
+            vc.post = post
+        }
     }
-    */
 
 }

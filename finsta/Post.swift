@@ -76,6 +76,32 @@ class Post: AnyObject {
         
     }
     
+    // Get *numberOfPosts* oldest posts starting with comment number *startNumber*
+    class func getOldestComments(startNumber: Int, numberOfComments: Int, post: PFObject, completion: @escaping (_ posts: [PFObject]?, _ error: Error?) -> Void) {
+        let predicate = NSPredicate(format: "post = %@", post)
+        let query = PFQuery(className: "Comment", predicate: predicate)
+        query.order(byAscending: "createdAt")
+        query.includeKey("author")
+        query.skip = startNumber
+        query.limit = numberOfComments
+        
+        var commentObjs: [PFObject]? = []
+        var commentError: Error? = nil
+        
+        query.findObjectsInBackground { (queryComments: [PFObject]?, queryError: Error?) in
+            if let queryPosts = queryComments {
+                commentObjs = queryComments
+            }
+            else {
+                print(queryError!.localizedDescription)
+                commentError = queryError
+                commentObjs = nil
+            }
+            completion(commentObjs, commentError)
+        }
+        
+    }
+    
     class func humanReadableDateFromDate(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMMM d, yyyy"
