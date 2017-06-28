@@ -26,8 +26,7 @@ class feedTableViewCell: UITableViewCell {
     @IBOutlet weak var likesLabel: UILabel!
     @IBOutlet weak var topCommentUsernameLabel: UILabel!
     @IBOutlet weak var topCommentContentLabel: UILabel!
-    @IBOutlet weak var viewCommentsLabel: UILabel!
-    
+    @IBOutlet weak var commentsButton: UIButton!
     @IBOutlet weak var createdDateLabel: UILabel!
     
     var postImageFile: PFFile! {

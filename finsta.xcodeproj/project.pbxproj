@@ -22,6 +22,8 @@
 		927FEC9C1F042A070007C62A /* InfiniteScrollActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927FEC9B1F042A070007C62A /* InfiniteScrollActivityView.swift */; };
 		927FEC9E1F0431680007C62A /* profileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927FEC9D1F0431680007C62A /* profileViewController.swift */; };
 		927FECA01F044FD10007C62A /* settingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927FEC9F1F044FD10007C62A /* settingsViewController.swift */; };
+		927FECA21F0454F90007C62A /* commentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927FECA11F0454F90007C62A /* commentsViewController.swift */; };
+		927FECA41F0456B90007C62A /* commentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927FECA31F0456B90007C62A /* commentsTableViewCell.swift */; };
 		92948ADF1F01BD590099CDB1 /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92948ADE1F01BD590099CDB1 /* loginViewController.swift */; };
 		92948AE11F01C91A0099CDB1 /* homeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92948AE01F01C91A0099CDB1 /* homeViewController.swift */; };
 		92948AE91F01CEE20099CDB1 /* cameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92948AE81F01CEE20099CDB1 /* cameraViewController.swift */; };
@@ -70,6 +72,8 @@
 		927FEC9B1F042A070007C62A /* InfiniteScrollActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteScrollActivityView.swift; sourceTree = "<group>"; };
 		927FEC9D1F0431680007C62A /* profileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = profileViewController.swift; sourceTree = "<group>"; };
 		927FEC9F1F044FD10007C62A /* settingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = settingsViewController.swift; sourceTree = "<group>"; };
+		927FECA11F0454F90007C62A /* commentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = commentsViewController.swift; sourceTree = "<group>"; };
+		927FECA31F0456B90007C62A /* commentsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = commentsTableViewCell.swift; sourceTree = "<group>"; };
 		92948ADE1F01BD590099CDB1 /* loginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
 		92948AE01F01C91A0099CDB1 /* homeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = homeViewController.swift; sourceTree = "<group>"; };
 		92948AE81F01CEE20099CDB1 /* cameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cameraViewController.swift; sourceTree = "<group>"; };
@@ -185,6 +189,7 @@
 				920E63161F017AF800192B5C /* signupViewController.swift */,
 				927FEC9D1F0431680007C62A /* profileViewController.swift */,
 				927FEC9F1F044FD10007C62A /* settingsViewController.swift */,
+				927FECA11F0454F90007C62A /* commentsViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -193,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				9202168A1F03222500B11228 /* feedTableViewCell.swift */,
+				927FECA31F0456B90007C62A /* commentsTableViewCell.swift */,
 				927FEC9B1F042A070007C62A /* InfiniteScrollActivityView.swift */,
 			);
 			name = Views;
@@ -489,10 +495,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				927FECA21F0454F90007C62A /* commentsViewController.swift in Sources */,
 				927FEC9C1F042A070007C62A /* InfiniteScrollActivityView.swift in Sources */,
 				920E63171F017AF800192B5C /* signupViewController.swift in Sources */,
 				9202168B1F03222500B11228 /* feedTableViewCell.swift in Sources */,
 				920216891F02FB0800B11228 /* postImageViewController.swift in Sources */,
+				927FECA41F0456B90007C62A /* commentsTableViewCell.swift in Sources */,
 				920E63151F017AF800192B5C /* AppDelegate.swift in Sources */,
 				92948AE91F01CEE20099CDB1 /* cameraViewController.swift in Sources */,
 				92948AEB1F01DD590099CDB1 /* Post.swift in Sources */,

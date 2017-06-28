@@ -14,18 +14,30 @@ class Post: AnyObject {
     class func postUserImage(image: UIImage?, caption: String?, date: Date?, location: CLLocation?, withCompletion completion: PFBooleanResultBlock?) {
         // Create Parse object PFObject
         let post = PFObject(className: "Post")
-        
-        // Add relevant fields to the object
         post["media"] = getPFFileFromImage(image: image) // PFFile column type
         post["author"] = PFUser.current() // Pointer column type that points to PFUser
-        post["caption"] = caption
-        post["dateCreated"] = date
+        post["dateCreated"] = date // Date photo was taken
         post["location"] = location != nil ? Post.getGeoLocationFromCoords(location: location!) : nil
         post["likesCount"] = 0
-        post["commentsCount"] = 0
         
-        // Save object (following function will save the object in Parse asynchronously)
-        post.saveInBackground(block: completion)
+        // Save caption as first comment
+        let comment = PFObject(className: "Comment")
+        comment["author"] = PFUser.current()
+        comment["content"] = caption
+        comment["likesCount"] = 0
+        comment["post"] = post
+        
+        // Save post and caption (following function will save the object in Parse asynchronously)
+        post.saveInBackground { (success: Bool, error: Error?) in
+            if success {
+                comment.saveInBackground(block: completion)
+            }
+            else {
+                if completion != nil {
+                    completion!(success, error)
+                }
+            }
+        }
     }
     
     class func getPFFileFromImage(image: UIImage?) -> PFFile? {
