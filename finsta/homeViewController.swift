@@ -49,8 +49,7 @@ class homeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let author = post["author"] as! PFUser
         cell.usernameLabel.text = author.username!
         cell.locationLabel.text = post["location"] as? String
-        print(post)
-        cell.createdDateLabel.text = Post.humanReadableDateFromDate(date: (post.createdAt as! Date)).uppercased()
+        cell.createdDateLabel.text = Post.humanReadableDateFromDate(date: (post.createdAt!)).uppercased()
         cell.postImageFile = post["media"] as? PFFile
         
         return cell
