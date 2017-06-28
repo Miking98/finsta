@@ -39,9 +39,10 @@ class Post: AnyObject {
         return nil
     }
     
+    // Get *numberOfPosts* most recent posts that were created before *startDate*
     class func getMostRecentPosts(startDate: Date, numberOfPosts: Int, completion: @escaping (_ posts: [PFObject]?, _ error: Error?) -> Void) {
-        let predicate = NSPredicate(format: "createdAt > %@", startDate.description)
-        var query = PFQuery(className: "Post", predicate: predicate)
+        let predicate = NSPredicate(format: "createdAt < %@", startDate.description)
+        let query = PFQuery(className: "Post")
         query.order(byDescending: "createdAt")
         query.includeKey("user")
         query.limit = numberOfPosts

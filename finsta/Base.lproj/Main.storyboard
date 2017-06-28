@@ -529,7 +529,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="461" id="oR3-cK-Kjd" customClass="feedTableViewCell" customModule="finsta" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="feedTableViewCell" rowHeight="461" id="oR3-cK-Kjd" customClass="feedTableViewCell" customModule="finsta" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="461"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oR3-cK-Kjd" id="7dl-nc-MH4">
@@ -543,7 +543,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TQi-UN-M0a">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TQi-UN-M0a" customClass="PFImageView">
                                                     <rect key="frame" x="0.0" y="41" width="375" height="284"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -565,7 +565,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="imageImageView" destination="TQi-UN-M0a" id="dmz-gb-ctN"/>
+                                            <outlet property="imagePFView" destination="TQi-UN-M0a" id="ENs-8K-Tp0"/>
                                             <outlet property="locationLabel" destination="SIX-3o-6je" id="wuw-nM-nNv"/>
                                             <outlet property="usernameLabel" destination="1Ri-zO-YQx" id="CVI-Ho-QkY"/>
                                         </connections>

@@ -7,6 +7,7 @@ target 'finsta' do
 
   # Pods for finsta
   pod 'Parse'
+  pod 'ParseUI'
 
   target 'finstaTests' do
     inherit! :search_paths

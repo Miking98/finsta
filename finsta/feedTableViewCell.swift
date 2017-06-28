@@ -7,13 +7,21 @@
 //
 
 import UIKit
+import Parse
+import ParseUI
 
 class feedTableViewCell: UITableViewCell {
 
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
-    @IBOutlet weak var imageImageView: UIImageView!
+    @IBOutlet weak var imagePFView: PFImageView!
     
+    var postImageFile: PFFile! {
+        didSet {
+            self.imagePFView.file = postImageFile
+            self.imagePFView.loadInBackground()
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

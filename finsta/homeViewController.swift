@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import ParseUI
 
 class homeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -27,8 +28,12 @@ class homeViewController: UIViewController, UITableViewDelegate, UITableViewData
         Post.getMostRecentPosts(startDate: currentDate, numberOfPosts: 20, completion: { (queryPosts: [PFObject]?, queryError: Error?) -> Void in
             if let queryPosts = queryPosts {
                 self.posts = queryPosts
+                self.feedTableView.reloadData()
             }
             else {
+                print(queryError!.localizedDescription)
+            }
+            if (self.posts.count == 0) {
                 print("No posts")
             }
         })
@@ -45,12 +50,13 @@ class homeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = feedTableView.dequeueReusableCell(withIdentifier: "feedTableView") as! feedTableViewCell
+        let cell = feedTableView.dequeueReusableCell(withIdentifier: "feedTableViewCell") as! feedTableViewCell
         let post = posts[indexPath.row]
         
-        cell.usernameLabel.text = post["title"] as! String
-        cell.locationLabel.text = post["location"] as! String
-        cell.imageImageView.image = post["image"] as! UIImage
+        print(post)
+        cell.usernameLabel.text = post["author"] as? String
+        cell.locationLabel.text = post["location"] as? String
+        cell.postImageFile = post["media"] as? PFFile
 //        if baseImageURL != "" {
 //            let fullImageURL = URL(string: baseImageURL + "w500" + imageURL)!
 //            let fullImageRequest = URLRequest(url: fullImageURL)
