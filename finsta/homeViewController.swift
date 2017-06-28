@@ -54,7 +54,7 @@ class homeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let post = posts[indexPath.row]
         
         print(post)
-        cell.usernameLabel.text = post["author"] as? String
+        cell.usernameLabel.text = (post["author"] as? PFObject)["username"] as? String
         cell.locationLabel.text = post["location"] as? String
         cell.postImageFile = post["media"] as? PFFile
 //        if baseImageURL != "" {
