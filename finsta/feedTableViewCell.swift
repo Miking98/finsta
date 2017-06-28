@@ -14,6 +14,7 @@ class feedTableViewCell: UITableViewCell {
 
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var createdDateLabel: UILabel!
     @IBOutlet weak var imagePFView: PFImageView!
     
     var postImageFile: PFFile! {
