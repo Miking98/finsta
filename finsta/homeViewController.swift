@@ -53,15 +53,10 @@ class homeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = feedTableView.dequeueReusableCell(withIdentifier: "feedTableViewCell") as! feedTableViewCell
         let post = posts[indexPath.row]
         
-        print(post)
-        cell.usernameLabel.text = (post["author"] as? PFObject)["username"] as? String
+        let author = post["author"] as! PFUser
+        cell.usernameLabel.text = author.username as! String
         cell.locationLabel.text = post["location"] as? String
         cell.postImageFile = post["media"] as? PFFile
-//        if baseImageURL != "" {
-//            let fullImageURL = URL(string: baseImageURL + "w500" + imageURL)!
-//            let fullImageRequest = URLRequest(url: fullImageURL)
-//            cell.photoImageView.af_setImage(withURLRequest: fullImageRequest, placeholderImage: #imageLiteral(resourceName: "movie_poster_placeholder"), imageTransition: .crossDissolve(0.8), runImageTransitionIfCached: false)
-//        }
         
         return cell
     }

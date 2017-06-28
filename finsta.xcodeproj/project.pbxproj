@@ -139,18 +139,14 @@
 		920E63131F017AF800192B5C /* finsta */ = {
 			isa = PBXGroup;
 			children = (
+				927FEC981F0341340007C62A /* Views */,
+				927FEC971F03411D0007C62A /* ViewControllers */,
 				920E63141F017AF800192B5C /* AppDelegate.swift */,
-				920E63161F017AF800192B5C /* signupViewController.swift */,
 				920E63181F017AF800192B5C /* Main.storyboard */,
 				92948AE21F01CB420099CDB1 /* Assets.xcassets */,
 				920E631D1F017AF800192B5C /* LaunchScreen.storyboard */,
 				920E63201F017AF800192B5C /* Info.plist */,
-				92948ADE1F01BD590099CDB1 /* loginViewController.swift */,
-				92948AE01F01C91A0099CDB1 /* homeViewController.swift */,
-				92948AE81F01CEE20099CDB1 /* cameraViewController.swift */,
 				92948AEA1F01DD590099CDB1 /* Post.swift */,
-				920216881F02FB0800B11228 /* postImageViewController.swift */,
-				9202168A1F03222500B11228 /* feedTableViewCell.swift */,
 			);
 			path = finsta;
 			sourceTree = "<group>";
@@ -171,6 +167,26 @@
 				920E63361F017AF900192B5C /* Info.plist */,
 			);
 			path = finstaUITests;
+			sourceTree = "<group>";
+		};
+		927FEC971F03411D0007C62A /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				92948AE01F01C91A0099CDB1 /* homeViewController.swift */,
+				920216881F02FB0800B11228 /* postImageViewController.swift */,
+				92948AE81F01CEE20099CDB1 /* cameraViewController.swift */,
+				92948ADE1F01BD590099CDB1 /* loginViewController.swift */,
+				920E63161F017AF800192B5C /* signupViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		927FEC981F0341340007C62A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9202168A1F03222500B11228 /* feedTableViewCell.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		EDE905F056ACA62C34F97FB8 /* Frameworks */ = {

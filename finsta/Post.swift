@@ -44,7 +44,7 @@ class Post: AnyObject {
         let predicate = NSPredicate(format: "createdAt < %@", startDate.description)
         let query = PFQuery(className: "Post")
         query.order(byDescending: "createdAt")
-        query.includeKey("user")
+        query.includeKey("author")
         query.limit = numberOfPosts
         
         var postObjs: [PFObject]? = []
