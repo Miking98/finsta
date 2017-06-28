@@ -58,6 +58,16 @@ class homeViewController: UIViewController, UITableViewDelegate, UITableViewData
         fetchMostRecentPosts(numberOfPosts: 20)
     }
     
+    func alertNetworkError() {
+        let alertController = UIAlertController(title: "Network Error", message: "Error fetching data from Parse database. Please check your network connection.", preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            // Reload page
+            self.viewDidLoad()
+        }
+        alertController.addAction(OKAction)
+        present(alertController, animated: true){}
+    }
+    
     func fetchMostRecentPosts(numberOfPosts: Int) {
         let currentDate = Date()
         Post.getMostRecentPosts(startDate: currentDate, numberOfPosts: numberOfPosts, completion: { (queryPosts: [PFObject]?, queryError: Error?) -> Void in
@@ -66,6 +76,7 @@ class homeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.feedTableView.reloadData()
             }
             else {
+                self.alertNetworkError()
                 print(queryError!.localizedDescription)
             }
             if (self.posts.count == 0) {
