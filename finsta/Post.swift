@@ -76,7 +76,7 @@ class Post: AnyObject {
         
     }
     
-    // Get *numberOfPosts* oldest posts starting with comment number *startNumber*
+    // Get *numberOfComments* oldest comments starting with comment number *startNumber*
     class func getOldestComments(startNumber: Int, numberOfComments: Int, post: PFObject, completion: @escaping (_ posts: [PFObject]?, _ error: Error?) -> Void) {
         let predicate = NSPredicate(format: "post = %@", post)
         let query = PFQuery(className: "Comment", predicate: predicate)
@@ -89,7 +89,7 @@ class Post: AnyObject {
         var commentError: Error? = nil
         
         query.findObjectsInBackground { (queryComments: [PFObject]?, queryError: Error?) in
-            if let queryPosts = queryComments {
+            if let queryComments = queryComments {
                 commentObjs = queryComments
             }
             else {
@@ -98,6 +98,34 @@ class Post: AnyObject {
                 commentObjs = nil
             }
             completion(commentObjs, commentError)
+        }
+        
+    }
+    
+    // Get information (name, followers, posts, etc.) for user *user*
+    class func getUserInformation(user: PFUser, completion: @escaping (_ user: PFObject?, _ error: Error?) -> Void) {
+        let query = PFUser.query()!
+        query.whereKey("username", equalTo: user.username!)
+        query.limit = 1
+        
+        var userObj: PFObject?
+        var userError: Error? = nil
+        
+        query.findObjectsInBackground { (queryUsers: [PFObject]?, queryError: Error?) in
+            if let queryUsers = queryUsers {
+                if queryUsers.count == 1 {
+                    userObj = queryUsers[0]
+                }
+                else {
+                    print("No users matched")
+                }
+            }
+            else {
+                print(queryError!.localizedDescription)
+                userError = queryError
+                userObj = nil
+            }
+            completion(userObj, userError)
         }
         
     }

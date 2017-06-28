@@ -12,7 +12,7 @@ import ParseUI
 
 class feedTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var userProfileImageView: UIImageView!
+    @IBOutlet weak var userProfileImageView: PFImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var imagePFView: PFImageView!
