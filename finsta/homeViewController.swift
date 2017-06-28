@@ -15,6 +15,7 @@ class homeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var feedTableView: UITableView!
     
     var posts: [PFObject] = []
+    var refreshControl: UIRefreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,19 +25,11 @@ class homeViewController: UIViewController, UITableViewDelegate, UITableViewData
         feedTableView.dataSource = self
         
         // Fetch 20 most recent posts
-        let currentDate = Date()
-        Post.getMostRecentPosts(startDate: currentDate, numberOfPosts: 20, completion: { (queryPosts: [PFObject]?, queryError: Error?) -> Void in
-            if let queryPosts = queryPosts {
-                self.posts = queryPosts
-                self.feedTableView.reloadData()
-            }
-            else {
-                print(queryError!.localizedDescription)
-            }
-            if (self.posts.count == 0) {
-                print("No posts")
-            }
-        })
+        fetchMostRecentPosts(numberOfPosts: 20)
+        
+        // Initialize a UIRefreshControl to fetch latest posts
+        refreshControl.addTarget(self, action: #selector(refreshControlAction), for: UIControlEvents.valueChanged)
+        feedTableView.insertSubview(refreshControl, at: 0)
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,12 +47,34 @@ class homeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let post = posts[indexPath.row]
         
         let author = post["author"] as! PFUser
-        cell.usernameLabel.text = author.username as! String
+        cell.usernameLabel.text = author.username!
         cell.locationLabel.text = post["location"] as? String
         cell.postImageFile = post["media"] as? PFFile
         
         return cell
     }
+    
+    func refreshControlAction(_ refreshControl: UIRefreshControl) {
+        fetchMostRecentPosts(numberOfPosts: 20)
+    }
+    
+    func fetchMostRecentPosts(numberOfPosts: Int) {
+        let currentDate = Date()
+        Post.getMostRecentPosts(startDate: currentDate, numberOfPosts: numberOfPosts, completion: { (queryPosts: [PFObject]?, queryError: Error?) -> Void in
+            if let queryPosts = queryPosts {
+                self.posts = queryPosts
+                self.feedTableView.reloadData()
+            }
+            else {
+                print(queryError!.localizedDescription)
+            }
+            if (self.posts.count == 0) {
+                print("No posts")
+            }
+            self.refreshControl.endRefreshing()
+        })
+    }
+    
     /*
     // MARK: - Navigation
 
