@@ -11,7 +11,7 @@ import Parse
 
 class Post: AnyObject {
     
-    class func postUserImage(image: UIImage?, withCaption caption: String?, withCompletion completion: PFBooleanResultBlock?) {
+    class func postUserImage(image: UIImage?, caption: String?, date: Date?, location: CLLocation?, withCompletion completion: PFBooleanResultBlock?) {
         // Create Parse object PFObject
         let post = PFObject(className: "Post")
         
@@ -19,6 +19,8 @@ class Post: AnyObject {
         post["media"] = getPFFileFromImage(image: image) // PFFile column type
         post["author"] = PFUser.current() // Pointer column type that points to PFUser
         post["caption"] = caption
+        post["dateCreated"] = date
+        post["location"] = location != nil ? Post.getGeoLocationFromCoords(location: location!) : nil
         post["likesCount"] = 0
         post["commentsCount"] = 0
         
@@ -35,6 +37,30 @@ class Post: AnyObject {
             }
         }
         return nil
+    }
+    
+    class func getMostRecentPosts(startDate: Date, numberOfPosts: Int, completion: @escaping (_ posts: [PFObject]?, _ error: Error?) -> Void) {
+        let predicate = NSPredicate(format: "createdAt > %@", startDate.description)
+        var query = PFQuery(className: "Post", predicate: predicate)
+        query.order(byDescending: "createdAt")
+        query.includeKey("user")
+        query.limit = numberOfPosts
+        
+        var postObjs: [PFObject]? = []
+        var postError: Error? = nil
+        
+        query.findObjectsInBackground { (queryPosts: [PFObject]?, queryError: Error?) in
+            if let queryPosts = queryPosts {
+                postObjs = queryPosts
+            }
+            else {
+                print(queryError!.localizedDescription)
+                postError = queryError
+                postObjs = nil
+            }
+            completion(postObjs, postError)
+        }
+        
     }
     
     class func humanReadableDateFromDate(date: Date) -> String {

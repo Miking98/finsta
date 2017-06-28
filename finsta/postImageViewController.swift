@@ -58,7 +58,10 @@ class postImageViewController: UIViewController {
         spinnerActivityIndicatorView.startAnimating()
         
         let caption = captionTextView.text ?? ""
-        Post.postUserImage(image: postImage, withCaption: caption) { (status: Bool, error: Error?) in
+        let date = postImageAsset?.creationDate ?? nil
+        let location = postImageAsset?.location ?? nil
+        
+        Post.postUserImage(image: postImage, caption: caption, date: date, location: location) { (status: Bool, error: Error?) in
             self.spinnerActivityIndicatorView.stopAnimating()
             // Go back to home feed
             let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
