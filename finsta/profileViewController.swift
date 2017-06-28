@@ -17,8 +17,9 @@ class profileViewController: UIViewController {
     @IBOutlet weak var editProfileButton: UIButton!
     
     @IBOutlet weak var userProfileImageView: UIImageView!
-    @IBOutlet weak var displayNameLabel: UILabel!
+    @IBOutlet weak var fullNameLabel: UILabel!
     @IBOutlet weak var biographyLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -72,6 +72,12 @@ class Post: AnyObject {
         return String(format: "%@ at %@", dateFormatter.string(from: date), timeFormatter.string(from: date))
     }
     
+    class func instagramStyleDateFromDate(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM d, yyyy"
+        return String(format: "%@", dateFormatter.string(from: date))
+    }
+    
     class func getGeoLocationFromCoords(location: CLLocation) -> String {
         var geoLocation = ""
         let geocoder = CLGeocoder()
