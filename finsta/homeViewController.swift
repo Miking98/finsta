@@ -76,7 +76,7 @@ class homeViewController: UIViewController, UITableViewDelegate, UITableViewData
             let scrollOffsetThreshold = scrollViewContentHeight - feedTableView.bounds.size.height // Bounds is height of table currently on screen
                 
             // When the user has scrolled past the threshold, start requesting
-            if (scrollView.contentOffset.y > scrollOffsetThreshold && feedTableView.isDragging) { // ContentOffset is how far user has scrolled the table view
+            if (scrollView.contentOffset.y > scrollOffsetThreshold && feedTableView.isDragging && posts.count > 0) { // ContentOffset is how far user has scrolled the table view
                 feedIsLoadingMoreData = true
                 // Update position of loadingMoreView, and start loading indicator
                 let frame = CGRect(x: 0, y: feedTableView.contentSize.height, width: feedTableView.bounds.size.width, height: InfiniteScrollActivityView.defaultHeight)

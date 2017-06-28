@@ -11,8 +11,9 @@ import Parse
 
 class signupViewController: UIViewController {
 
-    @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var fullNameTextField: UITextField!
+    @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signupButton: UIButton!
     
@@ -21,8 +22,9 @@ class signupViewController: UIViewController {
         let loginViewControllerInstance = loginViewController()
         
         // Set user properties
-        newUser.username = usernameTextField.text ?? ""
         newUser.email = emailTextField.text ?? ""
+        newUser["fullName"] = fullNameTextField.text ?? ""
+        newUser.username = usernameTextField.text ?? ""
         newUser.password = passwordTextField.text ?? ""
         
         //Error checking
@@ -34,6 +36,11 @@ class signupViewController: UIViewController {
         if newUser.username!.isEmpty {
             error = true
             let info: [String: Any] = [ "view": self, "fieldName" : "username", "field" : usernameTextField ]
+            alertInfo.append(info)
+        }
+        if (newUser["fullName"] as! String).isEmpty {
+            error = true
+            let info: [String: Any] = [ "view": self, "fieldName" : "full name", "field" : fullNameTextField ]
             alertInfo.append(info)
         }
         if newUser.email!.isEmpty || newUser.email!.range(of:"@") == nil {
