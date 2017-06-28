@@ -628,10 +628,19 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="bookmarkButtonImageView" destination="Qw3-oa-x78" id="5Ce-N8-Sc9"/>
+                                            <outlet property="commentButtonImageView" destination="buS-9N-noa" id="VLf-Br-Evc"/>
                                             <outlet property="createdDateLabel" destination="I58-Ub-zpy" id="1Ya-tZ-tCn"/>
+                                            <outlet property="heartButtonImageView" destination="yz1-71-4Va" id="VKu-CW-Rrv"/>
                                             <outlet property="imagePFView" destination="TQi-UN-M0a" id="ENs-8K-Tp0"/>
+                                            <outlet property="likesLabel" destination="t2D-sm-1x5" id="dhy-np-Oyi"/>
                                             <outlet property="locationLabel" destination="SIX-3o-6je" id="wuw-nM-nNv"/>
+                                            <outlet property="sendButtonImageView" destination="iGL-Wa-UBi" id="o3w-sU-cat"/>
+                                            <outlet property="topCommentContentLabel" destination="N26-Jd-kp5" id="lR6-MN-DFH"/>
+                                            <outlet property="topCommentUsernameLabel" destination="qqD-MU-ljl" id="OVL-fE-Ig2"/>
+                                            <outlet property="userProfileImageView" destination="cRO-Ns-a6m" id="nhl-fu-t37"/>
                                             <outlet property="usernameLabel" destination="1Ri-zO-YQx" id="CVI-Ho-QkY"/>
+                                            <outlet property="viewCommentsLabel" destination="Mxt-rb-lVv" id="pPU-XR-6hX"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
