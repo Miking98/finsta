@@ -148,7 +148,7 @@ class homeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "postToComments" {
+        if segue.identifier == "postToComments" || segue.identifier == "postCommentButtonToComments" {
             // Get parent Table View Cell
             let button = sender as! UIButton
             let view = button.superview!

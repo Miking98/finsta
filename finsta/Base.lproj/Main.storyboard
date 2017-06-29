@@ -555,7 +555,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" image="comment"/>
                                                     <connections>
-                                                        <segue destination="yEZ-NC-l16" kind="show" id="Y9W-xG-OI9"/>
+                                                        <segue destination="yEZ-NC-l16" kind="show" identifier="postCommentButtonToComments" id="Y9W-xG-OI9"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QQ5-0l-Vxw">
@@ -676,6 +676,9 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="Post"/>
+                                        <connections>
+                                            <action selector="postButtonTouch:" destination="yEZ-NC-l16" eventType="touchUpInside" id="Zui-Ff-z0r"/>
+                                        </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="send" translatesAutoresizingMaskIntoConstraints="NO" id="oeh-PM-ACL">
                                         <rect key="frame" x="6" y="15" width="38" height="35"/>
@@ -688,6 +691,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="addCommentTextField" destination="U9E-oa-VBu" id="KGo-A7-9UV"/>
                         <outlet property="commentsTableView" destination="srW-IT-zfJ" id="KFJ-SO-YDg"/>
                     </connections>
                 </viewController>
@@ -1252,6 +1256,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ThQ-MI-bbn"/>
-        <segue reference="nD5-WB-5XJ"/>
+        <segue reference="Y9W-xG-OI9"/>
     </inferredMetricsTieBreakers>
 </document>

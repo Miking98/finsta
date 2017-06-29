@@ -12,10 +12,11 @@ import Parse
 class commentsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
 
     @IBOutlet weak var commentsTableView: UITableView!
+    @IBOutlet weak var addCommentTextField: UITextField!
     
     var post: PFObject?
     var comments: [PFObject] = []
-    let NUMBER_OF_COMMENTS_FETCH_AT_ONCE = 1
+    let NUMBER_OF_COMMENTS_FETCH_AT_ONCE = 10
     
     var refreshControl: UIRefreshControl = UIRefreshControl()
     var loadingMoreView:InfiniteScrollActivityView?
@@ -131,6 +132,18 @@ class commentsViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
+    @IBAction func postButtonTouch(_ sender: Any) {
+        let user = PFUser.current()
+        let content = addCommentTextField.text ?? ""
+        Post.createCommentOnPost(user: user!, post: post!, content: content) { (error: Error?) in
+            if let error = error {
+                print(error.localizedDescription)
+                print("Error creating comment")
+            }
+        }
+        // Reload comments
+        self.viewDidLoad()
+    }
 
     /*
     // MARK: - Navigation

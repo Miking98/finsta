@@ -75,7 +75,7 @@ class editProfileViewController: UIViewController, ModalDelegate {
         let gender = genderTextField.text ?? ""
         let profileImage = userProfileImageView.image!
         // Save user information in database
-        Post.saveUserInformation(user: user!, username: username, fullName: fullName, bio: bio, website: website, email: email, phone: phone, gender: gender, profileImage: profileImage) { (error: Error?) in
+        Post.updateUserInformation(user: user!, username: username, fullName: fullName, bio: bio, website: website, email: email, phone: phone, gender: gender, profileImage: profileImage) { (error: Error?) in
             if let error = error {
                 print(error.localizedDescription)
                 print("Error saving user information")

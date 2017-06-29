@@ -23,9 +23,9 @@ class Post: AnyObject {
         // Save caption as first comment
         let comment = PFObject(className: "Comment")
         comment["author"] = PFUser.current()
+        comment["post"] = post
         comment["content"] = caption
         comment["likesCount"] = 0
-        comment["post"] = post
         
         // Save post and caption (following function will save the object in Parse asynchronously)
         post.saveInBackground(block: { (success: Bool, error: Error?) in
@@ -130,8 +130,8 @@ class Post: AnyObject {
         
     }
     
-    // Save information in database for user *user*
-    class func saveUserInformation(user: PFUser, username: String, fullName: String, bio: String, website: String, email: String, phone: String, gender: String, profileImage: UIImage, completion: @escaping (_ error: Error?) -> Void) {
+    // Update information in database for user *user*
+    class func updateUserInformation(user: PFUser, username: String, fullName: String, bio: String, website: String, email: String, phone: String, gender: String, profileImage: UIImage, completion: @escaping (_ error: Error?) -> Void) {
         user["username"] = username
         user["fullName"] = fullName
         user["biography"] = bio
@@ -142,6 +142,19 @@ class Post: AnyObject {
         user["profileImage"] = getPFFileFromImage(image: profileImage)
         
         user.saveInBackground(block: { (success: Bool, error: Error?) in
+            completion(error)
+        })
+    }
+    
+    // Create a comment to a post
+    class func createCommentOnPost(user: PFUser, post: PFObject, content: String, completion: @escaping (_ error: Error?) -> Void) {
+        let comment = PFObject(className: "Comment")
+        comment["author"] = PFUser.current()
+        comment["post"] = post
+        comment["content"] = content
+        comment["likesCount"] = 0
+        
+        comment.saveInBackground(block: { (success: Bool, error: Error?) in
             completion(error)
         })
     }

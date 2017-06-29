@@ -52,7 +52,6 @@ class feedTableViewCell: UITableViewCell {
     @IBAction func heartButtonTouch(_ sender: Any) {
         var delta = 0
         if heartButton.imageView!.image == #imageLiteral(resourceName: "heart") {
-            print("HI")
             heartButton.setImage(#imageLiteral(resourceName: "fullheart"), for: UIControlState.normal)
             delta = 1
         }
