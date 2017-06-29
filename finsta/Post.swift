@@ -103,18 +103,18 @@ class Post: AnyObject {
     }
     
     // Get information (name, followers, posts, etc.) for user *user*
-    class func getUserInformation(user: PFUser, completion: @escaping (_ user: PFObject?, _ error: Error?) -> Void) {
+    class func getUserInformation(user: PFUser, completion: @escaping (_ user: PFUser?, _ error: Error?) -> Void) {
         let query = PFUser.query()!
         query.whereKey("username", equalTo: user.username!)
         query.limit = 1
         
-        var userObj: PFObject?
+        var userObj: PFUser?
         var userError: Error? = nil
         
         query.findObjectsInBackground { (queryUsers: [PFObject]?, queryError: Error?) in
             if let queryUsers = queryUsers {
                 if queryUsers.count == 1 {
-                    userObj = queryUsers[0]
+                    userObj = queryUsers[0] as! PFUser
                 }
                 else {
                     print("No users matched")
@@ -126,6 +126,23 @@ class Post: AnyObject {
                 userObj = nil
             }
             completion(userObj, userError)
+        }
+        
+    }
+    
+    // Save information in database for user *user*
+    class func saveUserInformation(user: PFUser, username: String, fullName: String, bio: String, website: String, email: String, phone: String, gender: String, profileImage: UIImage, completion: @escaping (_ error: Error?) -> Void) {
+        user["username"] = username
+        user["fullName"] = fullName
+        user["biography"] = bio
+        user["website"] = website
+        user["email"] = email
+        user["phone"] = phone
+        user["gender"] = gender
+        user["profileImage"] = getPFFileFromImage(image: profileImage)
+        
+        user.saveInBackground { (success: Bool, error: Error?) in
+            completion(error)
         }
         
     }

@@ -33,7 +33,7 @@ class editProfileViewController: UIViewController, ModalDelegate {
         }
     }
     
-    var userInfo: PFObject?
+    var user: PFUser?
     
     @IBAction func userProfileImageTouch(_ sender: Any) {
         performSegue(withIdentifier: "editProfileToChooseProfileImage", sender: sender)
@@ -47,14 +47,15 @@ class editProfileViewController: UIViewController, ModalDelegate {
         userProfileImageView.clipsToBounds = true
         
         // Set labels to user properties
-        if let userInfo = userInfo {
-            self.fullNameTextField.text = (userInfo["fullName"] as? String) ?? ""
-            self.bioTextField.text = (userInfo["biography"] as? String) ?? ""
-            self.websiteTextField.text = (userInfo["website"] as? String) ?? ""
-            self.emailTextField.text = (userInfo["email"] as? String) ?? ""
-            self.phoneTextField.text = (userInfo["phone"] as? String) ?? ""
-            self.genderTextField.text = (userInfo["gender"] as? String) ?? ""
-            self.userProfileImageFile = userInfo["profileImage"] as? PFFile
+        if let user = user {
+            fullNameTextField.text = (user["fullName"] as? String) ?? ""
+            usernameTextField.text = (user["username"] as? String) ?? ""
+            bioTextField.text = (user["biography"] as? String) ?? ""
+            websiteTextField.text = (user["website"] as? String) ?? ""
+            emailTextField.text = (user["email"] as? String) ?? ""
+            phoneTextField.text = (user["phone"] as? String) ?? ""
+            genderTextField.text = (user["gender"] as? String) ?? ""
+            userProfileImageFile = user["profileImage"] as? PFFile
         }
     }
     
@@ -63,8 +64,25 @@ class editProfileViewController: UIViewController, ModalDelegate {
     }
     
     @IBAction func saveButtonTouch(_ sender: UIButton) {
+        // Get information from inputs
+        let fullName = fullNameTextField.text ?? ""
+        let username = usernameTextField.text ?? ""
+        let bio = bioTextField.text ?? ""
+        let website = websiteTextField.text ?? ""
+        let email = emailTextField.text ?? ""
+        let phone = phoneTextField.text ?? ""
+        let gender = genderTextField.text ?? ""
+        let profileImage = userProfileImageView.image!
         // Save user information in database
-        dismiss(animated: true, completion: nil)
+        Post.saveUserInformation(user: user!, username: username, fullName: fullName, bio: bio, website: website, email: email, phone: phone, gender: gender, profileImage: profileImage) { (error: Error?) in
+            if let error = error {
+                print(error.localizedDescription)
+                print("Error saving user information")
+            }
+            else {
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
     }
     
     @IBAction func cancelButtonTouch(_ sender: UIButton) {
@@ -73,7 +91,6 @@ class editProfileViewController: UIViewController, ModalDelegate {
     
     func changeProfileImage(value: UIImage) {
         userProfileImageView.image = value
-        userProfileImageFile = Post.getPFFileFromImage(image: value)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
