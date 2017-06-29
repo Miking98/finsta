@@ -13,10 +13,11 @@ class commentsViewController: UIViewController, UITableViewDelegate, UITableView
 
     @IBOutlet weak var commentsTableView: UITableView!
     @IBOutlet weak var addCommentTextField: UITextField!
+    @IBOutlet weak var postCommentButton: UIButton!
     
     var post: PFObject?
     var comments: [PFObject] = []
-    let NUMBER_OF_COMMENTS_FETCH_AT_ONCE = 10
+    let NUMBER_OF_COMMENTS_FETCH_AT_ONCE = 20
     
     var refreshControl: UIRefreshControl = UIRefreshControl()
     var loadingMoreView:InfiniteScrollActivityView?
@@ -24,6 +25,8 @@ class commentsViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let user = PFUser.current()!
         
         // Setup main feed table
         commentsTableView.delegate = self
@@ -42,6 +45,8 @@ class commentsViewController: UIViewController, UITableViewDelegate, UITableView
         insets.bottom += InfiniteScrollActivityView.defaultHeight
         commentsTableView.contentInset = insets
         
+        // Style add comments text field
+        addCommentTextField.placeholder = String(format: "Add a comment as %@", (user.username as! String))
         // Get post information
         if let post = post {
             // Fetch 20 oldest comments
@@ -132,14 +137,31 @@ class commentsViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
+    @IBAction func addCommentEditingChanged(_ sender: Any) {
+        // Enable Post button when user enters text into comment field
+        if addCommentTextField.text != "" {
+            postCommentButton.isEnabled = true
+        }
+        else {
+            postCommentButton.isEnabled = false
+        }
+    }
+    
     @IBAction func postButtonTouch(_ sender: Any) {
         let user = PFUser.current()
         let content = addCommentTextField.text ?? ""
+        // Disable text field
+        addCommentTextField.isUserInteractionEnabled = false
+        
         Post.createCommentOnPost(user: user!, post: post!, content: content) { (error: Error?) in
             if let error = error {
                 print(error.localizedDescription)
                 print("Error creating comment")
             }
+            else {
+                self.addCommentTextField.text = ""
+            }
+            self.addCommentTextField.isUserInteractionEnabled = true
         }
         // Reload comments
         self.viewDidLoad()

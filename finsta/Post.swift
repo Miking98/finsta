@@ -132,7 +132,7 @@ class Post: AnyObject {
     
     // Update information in database for user *user*
     class func updateUserInformation(user: PFUser, username: String, fullName: String, bio: String, website: String, email: String, phone: String, gender: String, profileImage: UIImage, completion: @escaping (_ error: Error?) -> Void) {
-        user["username"] = username
+        user.username = username
         user["fullName"] = fullName
         user["biography"] = bio
         user["website"] = website
