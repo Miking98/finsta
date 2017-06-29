@@ -884,20 +884,20 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c0u-bF-GYn">
-                                        <rect key="frame" x="10" y="9" width="37" height="38"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="darkprofile" translatesAutoresizingMaskIntoConstraints="NO" id="c0u-bF-GYn">
+                                        <rect key="frame" x="11" y="12" width="35" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ULW-ge-CZl">
-                                        <rect key="frame" x="10" y="55" width="37" height="38"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="lock" translatesAutoresizingMaskIntoConstraints="NO" id="ULW-ge-CZl">
+                                        <rect key="frame" x="10" y="58" width="35" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LMN-Wy-XBU">
-                                        <rect key="frame" x="10" y="101" width="37" height="38"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="website" translatesAutoresizingMaskIntoConstraints="NO" id="LMN-Wy-XBU">
+                                        <rect key="frame" x="2" y="99" width="52" height="48"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wl8-9b-sGu">
-                                        <rect key="frame" x="10" y="147" width="37" height="38"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="info" translatesAutoresizingMaskIntoConstraints="NO" id="wl8-9b-sGu">
+                                        <rect key="frame" x="11" y="150" width="35" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                 </subviews>
@@ -928,16 +928,16 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jr2-7l-JD8">
-                                        <rect key="frame" x="10" y="9" width="37" height="38"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="envelope" translatesAutoresizingMaskIntoConstraints="NO" id="Jr2-7l-JD8">
+                                        <rect key="frame" x="8" y="12" width="42" height="42"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KIS-eR-aOM">
-                                        <rect key="frame" x="10" y="55" width="37" height="38"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="phone" translatesAutoresizingMaskIntoConstraints="NO" id="KIS-eR-aOM">
+                                        <rect key="frame" x="10" y="61" width="37" height="38"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VGQ-Gn-bDG">
-                                        <rect key="frame" x="10" y="101" width="37" height="38"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gender" translatesAutoresizingMaskIntoConstraints="NO" id="VGQ-Gn-bDG">
+                                        <rect key="frame" x="13" y="104" width="37" height="38"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                 </subviews>
@@ -1087,11 +1087,18 @@
         <image name="bookmark" width="40" height="40"/>
         <image name="camera" width="40" height="40"/>
         <image name="comment" width="40" height="40"/>
+        <image name="darkprofile" width="100" height="100"/>
+        <image name="envelope" width="100" height="100"/>
+        <image name="gender" width="100" height="100"/>
         <image name="heart" width="40" height="40"/>
         <image name="home" width="40" height="40"/>
+        <image name="info" width="100" height="100"/>
+        <image name="lock" width="100" height="100"/>
+        <image name="phone" width="100" height="100"/>
         <image name="profile" width="40" height="40"/>
-        <image name="send" width="40" height="40"/>
+        <image name="send" width="100" height="100"/>
         <image name="settings" width="40" height="40"/>
+        <image name="website" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ThQ-MI-bbn"/>
