@@ -43,6 +43,10 @@ class editProfileViewController: UIViewController, ModalDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Make profile image round
+        userProfileImageView.layer.cornerRadius = userProfileImageView.frame.height/2
+        userProfileImageView.clipsToBounds = true
+        
         if let userInfo = userInfo {
             // Set labels to user properties
             self.userProfileImageFile = userInfo["profileImage"] as? PFFile

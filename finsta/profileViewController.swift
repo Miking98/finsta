@@ -33,6 +33,10 @@ class profileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Make profile image round
+        userProfileImageView.layer.cornerRadius = userProfileImageView.frame.height/2
+        userProfileImageView.clipsToBounds = true
 
         // Style "Edit Profile" and "Settings" button
         editProfileButton.layer.cornerRadius = 2;

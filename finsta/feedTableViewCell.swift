@@ -37,7 +37,10 @@ class feedTableViewCell: UITableViewCell {
     }
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        // Make profile image round
+        userProfileImageView.layer.cornerRadius = userProfileImageView.frame.height/2
+        userProfileImageView.clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
