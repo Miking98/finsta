@@ -10,15 +10,21 @@ import UIKit
 import Parse
 import ParseUI
 
-class editProfileViewController: UIViewController {
-    @IBOutlet weak var followingLabel: UILabel!
-    @IBOutlet weak var followersLabel: UILabel!
-    @IBOutlet weak var postsLabel: UILabel!
-    @IBOutlet weak var settingsButton: UIButton!
-    @IBOutlet weak var editProfileButton: UIButton!
+protocol ModalDelegate {
+    func changeProfileImage(value: UIImage)
+}
+
+class editProfileViewController: UIViewController, ModalDelegate {
     
-    @IBOutlet weak var fullNameLabel: UILabel!
-    @IBOutlet weak var biographyLabel: UILabel!
+    @IBOutlet weak var fullNameTextField: UITextField!
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var websiteTextField: UITextField!
+    @IBOutlet weak var bioTextField: UITextField!
+
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var phoneTextField: UITextField!
+    @IBOutlet weak var genderTextField: UITextField!
+
     @IBOutlet weak var userProfileImageView: PFImageView!
     var userProfileImageFile: PFFile! {
         didSet {
@@ -27,41 +33,47 @@ class editProfileViewController: UIViewController {
         }
     }
     
-    var user: PFUser?
     var userInfo: PFObject?
+    
+    @IBAction func userProfileImageTap(_ sender: UITapGestureRecognizer) {
+        // Modally present up profile image chooser
+        performSegue(withIdentifier: "editProfileToChooseProfileImage", sender: sender)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Style "Edit Profile" and "Settings" button
-        editProfileButton.layer.cornerRadius = 2;
-        editProfileButton.layer.borderWidth = 1;
-        editProfileButton.layer.borderColor = UIColor.gray.cgColor
-        settingsButton.layer.cornerRadius = 2;
-        settingsButton.layer.borderWidth = 1;
-        settingsButton.layer.borderColor = UIColor.gray.cgColor
-        
-        // Get current user
-        user = PFUser.current()
-        
-        Post.getUserInformation(user: user!) { (queryUser: PFObject?, queryError: Error?) in
-            if let queryUser = queryUser {
-                self.userInfo = queryUser
-                // Set labels to user properties
-                self.postsLabel.text = (self.userInfo!["postsCount"] as? String) ?? "0"
-                self.followersLabel.text = (self.userInfo!["followersCount"] as? String) ?? "0"
-                self.followingLabel.text = (self.userInfo!["followingCount"] as? String) ?? "0"
-                self.userProfileImageFile = self.userInfo!["profileImage"] as? PFFile
-                self.fullNameLabel.text = (self.userInfo!["fullName"] as? String) ?? "Your name"
-                self.biographyLabel.text = (self.userInfo!["biography"] as? String) ?? ""
-            }
+        if let userInfo = userInfo {
+            // Set labels to user properties
+            self.userProfileImageFile = userInfo["profileImage"] as? PFFile
+            self.fullNameTextField.text = (userInfo["fullName"] as? String) ?? ""
+            self.bioTextField.text = (userInfo["biography"] as? String) ?? ""
+            self.websiteTextField.text = (userInfo["website"] as? String) ?? ""
+            self.emailTextField.text = (userInfo["email"] as? String) ?? ""
+            self.phoneTextField.text = (userInfo["phone"] as? String) ?? ""
+            self.genderTextField.text = (userInfo["gender"] as? String) ?? ""
         }
+        
+        let chooseImageVC = chooseProfileImageViewController()
+        chooseImageVC.delegate = self
         
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func saveButtonTouch(_ sender: UIButton) {
+        // Save user information in database
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func cancelButtonTouch(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func changeProfileImage(value: UIImage) {
+        userProfileImageFile = Post.getPFFileFromImage(image: value)
     }
 
 }

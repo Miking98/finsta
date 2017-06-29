@@ -25,6 +25,7 @@
 		927FECA21F0454F90007C62A /* commentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927FECA11F0454F90007C62A /* commentsViewController.swift */; };
 		927FECA41F0456B90007C62A /* commentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927FECA31F0456B90007C62A /* commentsTableViewCell.swift */; };
 		927FECA61F0474290007C62A /* editProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927FECA51F0474290007C62A /* editProfileViewController.swift */; };
+		927FECA81F04821C0007C62A /* chooseProfileImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927FECA71F04821C0007C62A /* chooseProfileImageViewController.swift */; };
 		92948ADF1F01BD590099CDB1 /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92948ADE1F01BD590099CDB1 /* loginViewController.swift */; };
 		92948AE11F01C91A0099CDB1 /* homeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92948AE01F01C91A0099CDB1 /* homeViewController.swift */; };
 		92948AE91F01CEE20099CDB1 /* cameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92948AE81F01CEE20099CDB1 /* cameraViewController.swift */; };
@@ -76,6 +77,7 @@
 		927FECA11F0454F90007C62A /* commentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = commentsViewController.swift; sourceTree = "<group>"; };
 		927FECA31F0456B90007C62A /* commentsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = commentsTableViewCell.swift; sourceTree = "<group>"; };
 		927FECA51F0474290007C62A /* editProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = editProfileViewController.swift; sourceTree = "<group>"; };
+		927FECA71F04821C0007C62A /* chooseProfileImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = chooseProfileImageViewController.swift; sourceTree = "<group>"; };
 		92948ADE1F01BD590099CDB1 /* loginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
 		92948AE01F01C91A0099CDB1 /* homeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = homeViewController.swift; sourceTree = "<group>"; };
 		92948AE81F01CEE20099CDB1 /* cameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cameraViewController.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				927FEC9F1F044FD10007C62A /* settingsViewController.swift */,
 				927FECA11F0454F90007C62A /* commentsViewController.swift */,
 				927FECA51F0474290007C62A /* editProfileViewController.swift */,
+				927FECA71F04821C0007C62A /* chooseProfileImageViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -508,6 +511,7 @@
 				920E63151F017AF800192B5C /* AppDelegate.swift in Sources */,
 				92948AE91F01CEE20099CDB1 /* cameraViewController.swift in Sources */,
 				92948AEB1F01DD590099CDB1 /* Post.swift in Sources */,
+				927FECA81F04821C0007C62A /* chooseProfileImageViewController.swift in Sources */,
 				927FECA01F044FD10007C62A /* settingsViewController.swift in Sources */,
 				92948ADF1F01BD590099CDB1 /* loginViewController.swift in Sources */,
 				927FEC9E1F0431680007C62A /* profileViewController.swift in Sources */,
