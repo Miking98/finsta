@@ -10,7 +10,11 @@ import UIKit
 import Parse
 import ParseUI
 
-class homeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
+protocol feedTableViewCellDelegate {
+    func likePostToggle(cell: feedTableViewCell, delta: Int)
+}
+
+class homeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, feedTableViewCellDelegate {
     
     @IBOutlet weak var feedTableView: UITableView!
     
@@ -48,7 +52,6 @@ class homeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 
@@ -65,6 +68,11 @@ class homeViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.locationLabel.text = post["location"] as? String
         cell.createdDateLabel.text = Post.instagramStyleDateFromDate(date: (post.createdAt!)).uppercased()
         cell.postImageFile = post["media"] as? PFFile
+        // Toggle heart button between empty/full
+        let startHeartButtonState = true ? #imageLiteral(resourceName: "heart") : #imageLiteral(resourceName: "fullheart")
+        cell.heartButton.setImage(startHeartButtonState, for: UIControlState.normal)
+        
+        cell.delegate = self
         
         return cell
     }
@@ -132,6 +140,13 @@ class homeViewController: UIViewController, UITableViewDelegate, UITableViewData
         })
     }
 
+    func likePostToggle(cell: feedTableViewCell, delta: Int) {
+        let post = posts[feedTableView.indexPath(for: cell)!.row]
+        Post.updatePostLikes(post: post, delta: delta) { (error: Error?) in
+            print("Error updating likes")
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "postToComments" {
             // Get parent Table View Cell

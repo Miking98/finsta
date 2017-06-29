@@ -28,7 +28,7 @@ class Post: AnyObject {
         comment["post"] = post
         
         // Save post and caption (following function will save the object in Parse asynchronously)
-        post.saveInBackground { (success: Bool, error: Error?) in
+        post.saveInBackground(block: { (success: Bool, error: Error?) in
             if success {
                 comment.saveInBackground(block: completion)
             }
@@ -37,7 +37,7 @@ class Post: AnyObject {
                     completion!(success, error)
                 }
             }
-        }
+        })
     }
     
     class func getPFFileFromImage(image: UIImage?) -> PFFile? {
@@ -62,7 +62,7 @@ class Post: AnyObject {
         var postObjs: [PFObject]? = []
         var postError: Error? = nil
         
-        query.findObjectsInBackground { (queryPosts: [PFObject]?, queryError: Error?) in
+        query.findObjectsInBackground(block: { (queryPosts: [PFObject]?, queryError: Error?) in
             if let queryPosts = queryPosts {
                 postObjs = queryPosts
             }
@@ -72,7 +72,7 @@ class Post: AnyObject {
                 postObjs = nil
             }
             completion(postObjs, postError)
-        }
+        })
         
     }
     
@@ -88,7 +88,7 @@ class Post: AnyObject {
         var commentObjs: [PFObject]? = []
         var commentError: Error? = nil
         
-        query.findObjectsInBackground { (queryComments: [PFObject]?, queryError: Error?) in
+        query.findObjectsInBackground(block: { (queryComments: [PFObject]?, queryError: Error?) in
             if let queryComments = queryComments {
                 commentObjs = queryComments
             }
@@ -98,7 +98,7 @@ class Post: AnyObject {
                 commentObjs = nil
             }
             completion(commentObjs, commentError)
-        }
+        })
         
     }
     
@@ -111,10 +111,10 @@ class Post: AnyObject {
         var userObj: PFUser?
         var userError: Error? = nil
         
-        query.findObjectsInBackground { (queryUsers: [PFObject]?, queryError: Error?) in
+        query.findObjectsInBackground(block: { (queryUsers: [PFObject]?, queryError: Error?) in
             if let queryUsers = queryUsers {
                 if queryUsers.count == 1 {
-                    userObj = queryUsers[0] as! PFUser
+                    userObj = queryUsers[0] as? PFUser
                 }
                 else {
                     print("No users matched")
@@ -126,7 +126,7 @@ class Post: AnyObject {
                 userObj = nil
             }
             completion(userObj, userError)
-        }
+        })
         
     }
     
@@ -141,10 +141,16 @@ class Post: AnyObject {
         user["gender"] = gender
         user["profileImage"] = getPFFileFromImage(image: profileImage)
         
-        user.saveInBackground { (success: Bool, error: Error?) in
+        user.saveInBackground(block: { (success: Bool, error: Error?) in
             completion(error)
-        }
-        
+        })
+    }
+    
+    class func updatePostLikes(post: PFObject, delta: Int, completion: @escaping (_ error: Error?) -> Void) {
+        post["likesCount"] = (post["likesCount"] as! Int) + delta
+        post.saveInBackground(block: { (success: Bool, error: Error?) in
+            completion(error)
+        })
     }
     
     class func humanReadableDateFromDate(date: Date) -> String {

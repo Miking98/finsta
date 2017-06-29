@@ -499,27 +499,10 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="heart" translatesAutoresizingMaskIntoConstraints="NO" id="yz1-71-4Va">
-                                                    <rect key="frame" x="8" y="339" width="32" height="33"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cRO-Ns-a6m" customClass="PFImageView">
                                                     <rect key="frame" x="8" y="5" width="40" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.62202181159872327" green="0.63045105370622878" blue="0.67360009517766495" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="comment" translatesAutoresizingMaskIntoConstraints="NO" id="buS-9N-noa">
-                                                    <rect key="frame" x="41" y="341" width="29" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="send" translatesAutoresizingMaskIntoConstraints="NO" id="iGL-Wa-UBi">
-                                                    <rect key="frame" x="69" y="340" width="36" height="34"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bookmark" translatesAutoresizingMaskIntoConstraints="NO" id="Qw3-oa-x78">
-                                                    <rect key="frame" x="337" y="342" width="29" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="POST CREATED DATE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I58-Ub-zpy">
                                                     <rect key="frame" x="13" y="443" width="140" height="21"/>
@@ -567,18 +550,42 @@
                                                         <segue destination="yEZ-NC-l16" kind="show" identifier="postToComments" id="nD5-WB-5XJ"/>
                                                     </connections>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cfh-QM-PvJ">
+                                                    <rect key="frame" x="48" y="340" width="32" height="33"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" image="comment"/>
+                                                    <connections>
+                                                        <segue destination="yEZ-NC-l16" kind="show" id="Y9W-xG-OI9"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QQ5-0l-Vxw">
+                                                    <rect key="frame" x="6" y="339" width="36" height="34"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" image="heart"/>
+                                                    <connections>
+                                                        <action selector="heartButtonTouch:" destination="oR3-cK-Kjd" eventType="touchUpInside" id="JE0-0A-fAq"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xhW-HA-Dt1">
+                                                    <rect key="frame" x="86" y="339" width="38" height="38"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" image="send"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9XD-gB-2Hm">
+                                                    <rect key="frame" x="332" y="340" width="35" height="35"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" image="bookmark"/>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="bookmarkButtonImageView" destination="Qw3-oa-x78" id="5Ce-N8-Sc9"/>
-                                            <outlet property="commentButtonImageView" destination="buS-9N-noa" id="VLf-Br-Evc"/>
+                                            <outlet property="commentButton" destination="cfh-QM-PvJ" id="177-42-0ix"/>
                                             <outlet property="commentsButton" destination="pDc-ah-bOm" id="hxs-7l-VPY"/>
                                             <outlet property="createdDateLabel" destination="I58-Ub-zpy" id="1Ya-tZ-tCn"/>
-                                            <outlet property="heartButtonImageView" destination="yz1-71-4Va" id="VKu-CW-Rrv"/>
+                                            <outlet property="heartButton" destination="QQ5-0l-Vxw" id="3K5-eC-LgD"/>
                                             <outlet property="imagePFView" destination="TQi-UN-M0a" id="ENs-8K-Tp0"/>
                                             <outlet property="likesLabel" destination="t2D-sm-1x5" id="dhy-np-Oyi"/>
                                             <outlet property="locationLabel" destination="SIX-3o-6je" id="wuw-nM-nNv"/>
-                                            <outlet property="sendButtonImageView" destination="iGL-Wa-UBi" id="o3w-sU-cat"/>
                                             <outlet property="topCommentContentLabel" destination="N26-Jd-kp5" id="lR6-MN-DFH"/>
                                             <outlet property="topCommentUsernameLabel" destination="qqD-MU-ljl" id="OVL-fE-Ig2"/>
                                             <outlet property="userProfileImageView" destination="cRO-Ns-a6m" id="PBz-Bx-ZTO"/>
@@ -1245,5 +1252,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ThQ-MI-bbn"/>
+        <segue reference="nD5-WB-5XJ"/>
     </inferredMetricsTieBreakers>
 </document>

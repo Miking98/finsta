@@ -17,10 +17,8 @@ class feedTableViewCell: UITableViewCell {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var imagePFView: PFImageView!
     
-    
-    @IBOutlet weak var heartButtonImageView: UIImageView!
-    @IBOutlet weak var commentButtonImageView: UIImageView!
-    @IBOutlet weak var sendButtonImageView: UIImageView!
+    @IBOutlet weak var heartButton: UIButton!
+    @IBOutlet weak var commentButton: UIButton!
     @IBOutlet weak var bookmarkButtonImageView: UIImageView!
     
     @IBOutlet weak var likesLabel: UILabel!
@@ -35,6 +33,9 @@ class feedTableViewCell: UITableViewCell {
             self.imagePFView.loadInBackground()
         }
     }
+    
+    var delegate: feedTableViewCellDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -46,6 +47,20 @@ class feedTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         self.selectionStyle = .none
+    }
+
+    @IBAction func heartButtonTouch(_ sender: Any) {
+        var delta = 0
+        if heartButton.imageView!.image == #imageLiteral(resourceName: "heart") {
+            print("HI")
+            heartButton.setImage(#imageLiteral(resourceName: "fullheart"), for: UIControlState.normal)
+            delta = 1
+        }
+        else {
+            heartButton.setImage(#imageLiteral(resourceName: "heart"), for: UIControlState.normal)
+            delta = -1
+        }
+        self.delegate!.likePostToggle(cell: self, delta: delta)
     }
 
 }
