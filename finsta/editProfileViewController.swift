@@ -46,20 +46,16 @@ class editProfileViewController: UIViewController, ModalDelegate {
         userProfileImageView.layer.cornerRadius = userProfileImageView.frame.height/2
         userProfileImageView.clipsToBounds = true
         
+        // Set labels to user properties
         if let userInfo = userInfo {
-            // Set labels to user properties
-            self.userProfileImageFile = userInfo["profileImage"] as? PFFile
             self.fullNameTextField.text = (userInfo["fullName"] as? String) ?? ""
             self.bioTextField.text = (userInfo["biography"] as? String) ?? ""
             self.websiteTextField.text = (userInfo["website"] as? String) ?? ""
             self.emailTextField.text = (userInfo["email"] as? String) ?? ""
             self.phoneTextField.text = (userInfo["phone"] as? String) ?? ""
             self.genderTextField.text = (userInfo["gender"] as? String) ?? ""
+            self.userProfileImageFile = userInfo["profileImage"] as? PFFile
         }
-        
-        let chooseImageVC = chooseProfileImageViewController()
-        chooseImageVC.delegate = self
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -76,7 +72,15 @@ class editProfileViewController: UIViewController, ModalDelegate {
     }
     
     func changeProfileImage(value: UIImage) {
+        userProfileImageView.image = value
         userProfileImageFile = Post.getPFFileFromImage(image: value)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editProfileToChooseProfileImage" {
+            let vc = segue.destination as! chooseProfileImageViewController
+            vc.delegate = self
+        }
     }
 
 }

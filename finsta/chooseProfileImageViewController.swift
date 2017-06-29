@@ -25,7 +25,7 @@ class chooseProfileImageViewController: UIViewController, UIImagePickerControlle
     
     @IBAction func saveButtonTouch(_ sender: UIButton) {
         if postImage != nil {
-            if let delegate = self.delegate {
+            if let delegate = delegate {
                 delegate.changeProfileImage(value: postImage!)
             }
             dismiss(animated: true, completion: nil)
@@ -69,6 +69,7 @@ class chooseProfileImageViewController: UIViewController, UIImagePickerControlle
         
         // Save image info to object
         postImage = editedImage
+        profileImageView.image = postImage
         
         // Dismiss UIImagePickerController to go back to your original view controller
         dismiss(animated: true, completion: nil)
