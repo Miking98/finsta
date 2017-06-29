@@ -68,6 +68,7 @@ class homeViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.locationLabel.text = post["location"] as? String
         cell.createdDateLabel.text = Post.instagramStyleDateFromDate(date: (post.createdAt!)).uppercased()
         cell.postImageFile = post["media"] as? PFFile
+        cell.userProfileImageFile = author["profileImage"] as? PFFile
         // Toggle heart button between empty/full
         let startHeartButtonState = true ? #imageLiteral(resourceName: "heart") : #imageLiteral(resourceName: "fullheart")
         cell.heartButton.setImage(startHeartButtonState, for: UIControlState.normal)

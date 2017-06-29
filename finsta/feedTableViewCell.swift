@@ -33,6 +33,12 @@ class feedTableViewCell: UITableViewCell {
             self.imagePFView.loadInBackground()
         }
     }
+    var userProfileImageFile: PFFile! {
+        didSet {
+            self.userProfileImageView.file = userProfileImageFile
+            self.userProfileImageView.loadInBackground()
+        }
+    }
     
     var delegate: feedTableViewCellDelegate?
     

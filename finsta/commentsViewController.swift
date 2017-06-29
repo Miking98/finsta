@@ -46,7 +46,7 @@ class commentsViewController: UIViewController, UITableViewDelegate, UITableView
         commentsTableView.contentInset = insets
         
         // Style add comments text field
-        addCommentTextField.placeholder = String(format: "Add a comment as %@", (user.username as! String))
+        addCommentTextField.placeholder = String(format: "Add a comment as %@", user.username!)
         // Get post information
         if let post = post {
             // Fetch 20 oldest comments
