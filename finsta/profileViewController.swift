@@ -24,6 +24,7 @@ class profileViewController: UIViewController, EditProfileModalDelegate {
     
     @IBOutlet weak var fullNameLabel: UILabel!
     @IBOutlet weak var biographyLabel: UILabel!
+    @IBOutlet weak var websiteLabel: UILabel!
     @IBOutlet weak var userProfileImageView: PFImageView!
     var userProfileImageFile: PFFile! {
         didSet {
@@ -69,6 +70,7 @@ class profileViewController: UIViewController, EditProfileModalDelegate {
         self.userProfileImageFile = self.user!["profileImage"] as? PFFile
         self.fullNameLabel.text = (self.user!["fullName"] as? String) ?? "Your name"
         self.biographyLabel.text = (self.user!["biography"] as? String) ?? ""
+        self.websiteLabel.text = (self.user!["website"] as? String) ?? ""
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
