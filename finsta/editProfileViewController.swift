@@ -35,8 +35,7 @@ class editProfileViewController: UIViewController, ModalDelegate {
     
     var userInfo: PFObject?
     
-    @IBAction func userProfileImageTap(_ sender: UITapGestureRecognizer) {
-        // Modally present up profile image chooser
+    @IBAction func userProfileImageTouch(_ sender: Any) {
         performSegue(withIdentifier: "editProfileToChooseProfileImage", sender: sender)
     }
     
