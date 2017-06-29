@@ -14,7 +14,7 @@ protocol EditProfileModalDelegate {
     func updateUserInformation()
 }
 
-class profileViewController: UIViewController, EditProfileModalDelegate {
+class profileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, EditProfileModalDelegate {
 
     @IBOutlet weak var followingLabel: UILabel!
     @IBOutlet weak var followersLabel: UILabel!
@@ -33,10 +33,21 @@ class profileViewController: UIViewController, EditProfileModalDelegate {
         }
     }
     
+    @IBOutlet weak var postsCollectionView: UICollectionView!
+    @IBOutlet weak var postsCollectionViewFlowLayout: UICollectionViewFlowLayout!
+    
     var user: PFUser?
+    var userPosts: [PFObject] = []
+    var NUMBER_OF_POSTS_FETCH_AT_ONCE = 20
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Setup collection view
+        postsCollectionView.delegate = self
+        postsCollectionView.dataSource = self
+        postsCollectionViewFlowLayout.minimumLineSpacing = 0
+        postsCollectionViewFlowLayout.minimumInteritemSpacing = 0
         
         // Make profile image round
         userProfileImageView.layer.cornerRadius = userProfileImageView.frame.height/2
@@ -53,13 +64,23 @@ class profileViewController: UIViewController, EditProfileModalDelegate {
         // Get current user
         user = PFUser.current()
         
+        // Get user information
         Post.getUserInformation(user: user!) { (queryUser: PFUser?, queryError: Error?) in
             if let queryUser = queryUser {
                 self.user = queryUser
                 self.setLabels()
+                // Get user's posts
+                self.fetchUserPosts()
+            }
+            else {
+                print(queryError?.localizedDescription ?? "")
+                print("Error getting user information")
             }
         }
-        
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
 
     func setLabels() {
@@ -72,8 +93,19 @@ class profileViewController: UIViewController, EditProfileModalDelegate {
         self.biographyLabel.text = (self.user!["biography"] as? String) ?? ""
         self.websiteLabel.text = (self.user!["website"] as? String) ?? ""
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    
+    func fetchUserPosts(append: Bool = false) {
+        let startDate = Date()
+        Post.getUserMostRecentPosts(startDate: startDate, numberOfPosts: self.NUMBER_OF_POSTS_FETCH_AT_ONCE, user: self.user!, completion: { (queryPosts: [PFObject]?, queryError: Error?) in
+            if let queryPosts = queryPosts {
+                self.userPosts = queryPosts
+                self.postsCollectionView.reloadData()
+            }
+            else {
+                print(queryError?.localizedDescription ?? "")
+                print("Error fetching user's posts")
+            }
+        })
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -86,6 +118,19 @@ class profileViewController: UIViewController, EditProfileModalDelegate {
     
     func updateUserInformation() {
         setLabels()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return userPosts.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "profilePostCollectionViewCell", for: indexPath) as! profilePostCollectionViewCell
+        let post = userPosts[indexPath.row]
+        cell.postImageFile = post["media"] as? PFFile
+        
+        print(post)
+        return cell
     }
 
 }
