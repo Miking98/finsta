@@ -34,6 +34,7 @@ class editProfileViewController: UIViewController, ModalDelegate {
     }
     
     var user: PFUser?
+    var delegate: EditProfileModalDelegate?
     
     @IBAction func userProfileImageTouch(_ sender: Any) {
         performSegue(withIdentifier: "editProfileToChooseProfileImage", sender: sender)
@@ -80,6 +81,7 @@ class editProfileViewController: UIViewController, ModalDelegate {
                 print("Error saving user information")
             }
             else {
+                self.delegate!.updateUserInformation()
                 self.dismiss(animated: true, completion: nil)
             }
         }

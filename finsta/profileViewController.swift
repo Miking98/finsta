@@ -10,7 +10,11 @@ import UIKit
 import Parse
 import ParseUI
 
-class profileViewController: UIViewController {
+protocol EditProfileModalDelegate {
+    func updateUserInformation()
+}
+
+class profileViewController: UIViewController, EditProfileModalDelegate {
 
     @IBOutlet weak var followingLabel: UILabel!
     @IBOutlet weak var followersLabel: UILabel!
@@ -51,18 +55,21 @@ class profileViewController: UIViewController {
         Post.getUserInformation(user: user!) { (queryUser: PFUser?, queryError: Error?) in
             if let queryUser = queryUser {
                 self.user = queryUser
-                // Set labels to user properties
-                self.postsLabel.text = (self.user!["postsCount"] as? String) ?? "0"
-                self.followersLabel.text = (self.user!["followersCount"] as? String) ?? "0"
-                self.followingLabel.text = (self.user!["followingCount"] as? String) ?? "0"
-                self.userProfileImageFile = self.user!["profileImage"] as? PFFile
-                self.fullNameLabel.text = (self.user!["fullName"] as? String) ?? "Your name"
-                self.biographyLabel.text = (self.user!["biography"] as? String) ?? ""
+                self.setLabels()
             }
         }
         
     }
 
+    func setLabels() {
+        // Set labels to user properties
+        self.postsLabel.text = (self.user!["postsCount"] as? String) ?? "0"
+        self.followersLabel.text = (self.user!["followersCount"] as? String) ?? "0"
+        self.followingLabel.text = (self.user!["followingCount"] as? String) ?? "0"
+        self.userProfileImageFile = self.user!["profileImage"] as? PFFile
+        self.fullNameLabel.text = (self.user!["fullName"] as? String) ?? "Your name"
+        self.biographyLabel.text = (self.user!["biography"] as? String) ?? ""
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -70,8 +77,13 @@ class profileViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "profileToEditProfile" {
             let vc = segue.destination as! editProfileViewController
+            vc.delegate = self
             vc.user = user
         }
+    }
+    
+    func updateUserInformation() {
+        setLabels()
     }
 
 }
