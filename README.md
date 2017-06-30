@@ -22,10 +22,10 @@ The following **optional** features are implemented:
 
 - [ X ] Show the username and creation time for each post
 - [ X ] After the user submits a new post, show a progress HUD while the post is being uploaded to Parse.
-- [ ] User Profiles:
+- [ X ] User Profiles:
   - [ X ] Allow the logged in user to add a profile photo
   - [ X ] Display the profile photo with each post
-  - [ ] Tapping on a post's username or profile photo goes to that user's profile page
+  - [ X ] Tapping on a post's username or profile photo goes to that user's profile page
 - [ X ] User can comment on a post and see all comments for each post in the post details screen.
 - [ X ] User can like a post and see number of likes for each post in the post details screen.
 - [ X ] Run your app on your phone and use the camera to take the photo
@@ -38,6 +38,8 @@ The following **additional** features are implemented:
 - [ X ] Top comment under post will default to the caption the user provides when uploading an image, but will automatically fall back on the oldest comment if no caption is specified, just like Instagram
 - [ X ] "Explore" view" using Collection View like Instagram has
 - [ X ] Ability to edit profile with all features of Instagram, e.g. bio, website, phone number, gender, etc.
+- [ X ] Alert user when network errors occur
+- [ X ] Automatically read date imported photo was taken and location where it was taken, then use reverse geolocation to convert the coordinates provided in the image's metadata to human readable addresses
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
