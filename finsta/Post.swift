@@ -12,8 +12,12 @@ import Parse
 class Post: AnyObject {
     
     class func postUserImage(image: UIImage?, caption: String?, date: Date?, location: CLLocation?, withCompletion completion: PFBooleanResultBlock?) {
+        // Update user's post count
         let user = PFUser.current()!
         user["postsCount"] = (user["postsCount"] as? Int ?? 0) + 1
+        
+        // Check if non-empty caption provided
+        let captionSubmitted = caption != nil && caption != ""
         
         // Create Parse object PFObject
         let post = PFObject(className: "Post")
@@ -22,25 +26,28 @@ class Post: AnyObject {
         post["dateCreated"] = date ?? NSNull() // Date photo was taken
         post["location"] = location != nil ? Post.getGeoLocationFromCoords(location: location!) : NSNull()
         post["likesCount"] = 0
-        post["commentsCount"] = 0
-        post["oldestCommentAuthor"] = user
-        post["oldestCommentContent"] = caption ?? NSNull()
-        post["commentsCount"] = 0
-        
-        // Save caption as first comment
-        let comment = PFObject(className: "Comment")
-        comment["author"] = user
-        comment["post"] = post
-        comment["content"] = caption ?? NSNull()
-        comment["likesCount"] = 0
+        post["commentsCount"] = captionSubmitted ? 1 : 0
+        post["oldestCommentAuthor"] = captionSubmitted ? user : NSNull()
+        post["oldestCommentContent"] = captionSubmitted ? caption : NSNull()
         
         
         // Save post and caption (following function will save the object in Parse asynchronously)
         post.saveInBackground(block: { (success: Bool, error: Error?) in
             if success {
-                comment.saveInBackground(block: { (success: Bool, error: Error?) in
+                user.saveInBackground(block: { (success: Bool, error: Error?) in
                     if success {
-                        user.saveInBackground(block: completion)
+                        if captionSubmitted {
+                            // Save caption as first comment
+                            let comment = PFObject(className: "Comment")
+                            comment["author"] = user
+                            comment["post"] = post
+                            comment["content"] = caption ?? NSNull()
+                            comment["likesCount"] = 0
+                            comment.saveInBackground(block: completion)
+                        }
+                        else {
+                            completion!(success, error)
+                        }
                     }
                     else {
                         if completion != nil {
@@ -212,8 +219,14 @@ class Post: AnyObject {
         comment["content"] = content
         comment["likesCount"] = 0
         
+        
         comment.saveInBackground(block: { (success: Bool, error: Error?) in
             post["commentsCount"] = (post["commentsCount"] as? Int ?? 0) + 1
+            // Check if this is the first comment. If so, set it as the oldest comment on this post
+            if ((post["commentsCount"] as! Int) == 1) {
+                post["oldestCommentAuthor"] = user
+                post["oldestCommentContent"] = content
+            }
             post.saveInBackground(block: { (success: Bool, error: Error?) in
                 completion(error)
             })
