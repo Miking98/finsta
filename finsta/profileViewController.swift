@@ -85,9 +85,9 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
 
     func setLabels() {
         // Set labels to user properties
-        self.postsLabel.text = (self.user!["postsCount"] as? String) ?? "0"
-        self.followersLabel.text = (self.user!["followersCount"] as? String) ?? "0"
-        self.followingLabel.text = (self.user!["followingCount"] as? String) ?? "0"
+        self.postsLabel.text = String(format: "%d", self.user!["postsCount"] as? Int32 ?? 0)
+        self.followersLabel.text = String(format: "%d", self.user!["followersCount"] as? Int32 ?? 0)
+        self.followingLabel.text = String(format: "%d", self.user!["followingCount"] as? Int32 ?? 0)
         self.userProfileImageFile = self.user!["profileImage"] as? PFFile
         self.fullNameLabel.text = (self.user!["fullName"] as? String) ?? "Your name"
         self.biographyLabel.text = (self.user!["biography"] as? String) ?? ""
@@ -137,7 +137,6 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
         let post = userPosts[indexPath.row]
         cell.postImageFile = post["media"] as? PFFile
         
-        print(post)
         return cell
     }
 

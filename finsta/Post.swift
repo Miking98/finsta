@@ -115,6 +115,20 @@ class Post: AnyObject {
             if let queryUsers = queryUsers {
                 if queryUsers.count == 1 {
                     userObj = queryUsers[0] as? PFUser
+                    
+                    // Get number of posts, followers, following
+                    let predicate = NSPredicate(format: "author = %@", user)
+                    let query = PFQuery(className: "Post", predicate: predicate)
+                    query.countObjectsInBackground(block: { (count: Int32, error: Error?) -> Void in
+                        if let error = error {
+                            print(error.localizedDescription)
+                            print("Error counting user's posts")
+                        }
+                        else {
+                            userObj!["postsCount"] = count
+                        }
+                        completion(userObj, userError)
+                    })
                 }
                 else {
                     print("No users matched")
@@ -124,8 +138,8 @@ class Post: AnyObject {
                 print(queryError!.localizedDescription)
                 userError = queryError
                 userObj = nil
+                completion(userObj, userError)
             }
-            completion(userObj, userError)
         })
         
     }
