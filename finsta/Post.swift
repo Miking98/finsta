@@ -19,6 +19,7 @@ class Post: AnyObject {
         post["dateCreated"] = date ?? NSNull() // Date photo was taken
         post["location"] = location != nil ? Post.getGeoLocationFromCoords(location: location!) : NSNull()
         post["likesCount"] = 0
+        post["commentsCount"] = 0
         
         // Save caption as first comment
         let comment = PFObject(className: "Comment")
@@ -27,10 +28,22 @@ class Post: AnyObject {
         comment["content"] = caption ?? NSNull()
         comment["likesCount"] = 0
         
+        let user = PFUser.current()!
+        user["postsCount"] = (user["postsCount"] as! Int) + 1
+        
         // Save post and caption (following function will save the object in Parse asynchronously)
         post.saveInBackground(block: { (success: Bool, error: Error?) in
             if success {
-                comment.saveInBackground(block: completion)
+                comment.saveInBackground(block: { (success: Bool, error: Error?) in
+                    if success {
+                        user.saveInBackground(block: completion)
+                    }
+                    else {
+                        if completion != nil {
+                            completion!(success, error)
+                        }
+                    }
+                })
             }
             else {
                 if completion != nil {
@@ -51,7 +64,7 @@ class Post: AnyObject {
         return nil
     }
     
-    // Get *numberOfPosts* most recent posts that were created before *startDate*
+    // Get *numberOfPosts* most recent posts from everybody that were created before *startDate*
     class func getMostRecentPosts(startDate: Date, numberOfPosts: Int, completion: @escaping (_ posts: [PFObject]?, _ error: Error?) -> Void) {
         let predicate = NSPredicate(format: "createdAt < %@", startDate as NSDate)
         let query = PFQuery(className: "Post", predicate: predicate)
@@ -68,8 +81,8 @@ class Post: AnyObject {
             }
             else {
                 print(queryError!.localizedDescription)
+                print("Error getting posts")
                 postError = queryError
-                postObjs = nil
             }
             completion(postObjs, postError)
         })
@@ -195,7 +208,10 @@ class Post: AnyObject {
         comment["likesCount"] = 0
         
         comment.saveInBackground(block: { (success: Bool, error: Error?) in
-            completion(error)
+            post["commentsCount"] = (post["commentsCount"] as? Int ?? 0) + 1
+            post.saveInBackground(block: { (success: Bool, error: Error?) in
+                completion(error)
+            })
         })
     }
     
@@ -204,6 +220,7 @@ class Post: AnyObject {
         like["post"] = post
         like["user"] = user
         
+        post["likesCount"] = (post["likesCount"] as! Int) + delta
         if delta == 1 {
             like.saveInBackground(block: { (success: Bool, error: Error?) in
                 completion(error)

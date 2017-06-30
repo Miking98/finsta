@@ -19,6 +19,8 @@
 		920E632A1F017AF900192B5C /* finstaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920E63291F017AF900192B5C /* finstaTests.swift */; };
 		920E63351F017AF900192B5C /* finstaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920E63341F017AF900192B5C /* finstaUITests.swift */; };
 		923ECE411F05B9C6009963CB /* profilePostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923ECE401F05B9C6009963CB /* profilePostCollectionViewCell.swift */; };
+		923ECE451F06F1D6009963CB /* exploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923ECE441F06F1D6009963CB /* exploreViewController.swift */; };
+		923ECE471F06F376009963CB /* exploreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923ECE461F06F376009963CB /* exploreCollectionViewCell.swift */; };
 		927FEC9A1F04218A0007C62A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 927FEC991F04218A0007C62A /* Assets.xcassets */; };
 		927FEC9C1F042A070007C62A /* InfiniteScrollActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927FEC9B1F042A070007C62A /* InfiniteScrollActivityView.swift */; };
 		927FEC9E1F0431680007C62A /* profileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927FEC9D1F0431680007C62A /* profileViewController.swift */; };
@@ -72,6 +74,8 @@
 		920E63341F017AF900192B5C /* finstaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = finstaUITests.swift; sourceTree = "<group>"; };
 		920E63361F017AF900192B5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		923ECE401F05B9C6009963CB /* profilePostCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = profilePostCollectionViewCell.swift; sourceTree = "<group>"; };
+		923ECE441F06F1D6009963CB /* exploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = exploreViewController.swift; sourceTree = "<group>"; };
+		923ECE461F06F376009963CB /* exploreCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = exploreCollectionViewCell.swift; sourceTree = "<group>"; };
 		927FEC991F04218A0007C62A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		927FEC9B1F042A070007C62A /* InfiniteScrollActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteScrollActivityView.swift; sourceTree = "<group>"; };
 		927FEC9D1F0431680007C62A /* profileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = profileViewController.swift; sourceTree = "<group>"; };
@@ -198,6 +202,7 @@
 				927FECA11F0454F90007C62A /* commentsViewController.swift */,
 				927FECA51F0474290007C62A /* editProfileViewController.swift */,
 				927FECA71F04821C0007C62A /* chooseProfileImageViewController.swift */,
+				923ECE441F06F1D6009963CB /* exploreViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -209,6 +214,7 @@
 				927FECA31F0456B90007C62A /* commentsTableViewCell.swift */,
 				927FEC9B1F042A070007C62A /* InfiniteScrollActivityView.swift */,
 				923ECE401F05B9C6009963CB /* profilePostCollectionViewCell.swift */,
+				923ECE461F06F376009963CB /* exploreCollectionViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -516,10 +522,12 @@
 				92948AEB1F01DD590099CDB1 /* Post.swift in Sources */,
 				927FECA81F04821C0007C62A /* chooseProfileImageViewController.swift in Sources */,
 				927FECA01F044FD10007C62A /* settingsViewController.swift in Sources */,
+				923ECE471F06F376009963CB /* exploreCollectionViewCell.swift in Sources */,
 				923ECE411F05B9C6009963CB /* profilePostCollectionViewCell.swift in Sources */,
 				92948ADF1F01BD590099CDB1 /* loginViewController.swift in Sources */,
 				927FEC9E1F0431680007C62A /* profileViewController.swift in Sources */,
 				92948AE11F01C91A0099CDB1 /* homeViewController.swift in Sources */,
+				923ECE451F06F1D6009963CB /* exploreViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

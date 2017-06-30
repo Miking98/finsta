@@ -19,12 +19,12 @@ class feedTableViewCell: UITableViewCell {
     
     @IBOutlet weak var heartButton: UIButton!
     @IBOutlet weak var commentButton: UIButton!
-    @IBOutlet weak var bookmarkButtonImageView: UIImageView!
+    @IBOutlet weak var bookmarkButton: UIButton!
     
     @IBOutlet weak var likesLabel: UILabel!
     @IBOutlet weak var topCommentUsernameLabel: UILabel!
     @IBOutlet weak var topCommentContentLabel: UILabel!
-    @IBOutlet weak var commentsButton: UIButton!
+    @IBOutlet weak var commentsTextButton: UIButton!
     @IBOutlet weak var createdDateLabel: UILabel!
     
     var postImageFile: PFFile! {

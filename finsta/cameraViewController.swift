@@ -20,6 +20,8 @@ class cameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var photoTabButton: UIButton!
     @IBOutlet weak var videoTabButton: UIButton!
     
+    @IBOutlet weak var nextBarButton: UIBarButtonItem!
+    
     var postImage: UIImage?
     var postImageAsset: PHAsset?
 
@@ -101,14 +103,14 @@ class cameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         postImage = editedImage
         postImageAsset = asset
         
+        // Enable Next button
+        nextBarButton.isEnabled = true
+        
         // Dismiss UIImagePickerController to go back to your original view controller
         dismiss(animated: true, completion: nil)
     }
 
     
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! postImageViewController
         vc.postImage = postImage

@@ -72,11 +72,15 @@ class homeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let post = posts[indexPath.row]
         
         let author = post["author"] as! PFUser
+        
+        // Set up labels
         cell.usernameLabel.text = author.username!
         cell.locationLabel.text = post["location"] as? String
         cell.createdDateLabel.text = Post.instagramStyleDateFromDate(date: (post.createdAt!)).uppercased()
         cell.postImageFile = post["media"] as? PFFile
         cell.userProfileImageFile = author["profileImage"] as? PFFile
+        cell.commentsTextButton.setTitle(String(format: "View all %d comments", (post["commentsCount"] as? Int ?? 0)), for: .normal)
+        
         // Toggle heart button between empty/full
         let startHeartButtonState = true ? #imageLiteral(resourceName: "heart") : #imageLiteral(resourceName: "fullheart")
         cell.heartButton.setImage(startHeartButtonState, for: UIControlState.normal)

@@ -121,7 +121,6 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
             let vc = segue.destination as! homeViewController
             vc.specificPost = post
         }
-        
     }
     
     func updateUserInformation() {
