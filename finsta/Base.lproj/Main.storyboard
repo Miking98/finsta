@@ -603,8 +603,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pDc-ah-bOm">
-                                                    <rect key="frame" x="8" y="415" width="160" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pDc-ah-bOm">
+                                                    <rect key="frame" x="13" y="415" width="160" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <state key="normal" title="View all 234 comments">
@@ -1418,7 +1418,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ThQ-MI-bbn"/>
-        <segue reference="VyE-hG-uM0"/>
+        <segue reference="DC5-7M-6en"/>
         <segue reference="Y9W-xG-OI9"/>
     </inferredMetricsTieBreakers>
 </document>
