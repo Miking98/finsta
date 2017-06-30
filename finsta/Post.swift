@@ -199,11 +199,38 @@ class Post: AnyObject {
         })
     }
     
-    class func updatePostLikes(post: PFObject, delta: Int, completion: @escaping (_ error: Error?) -> Void) {
-        post["likesCount"] = (post["likesCount"] as! Int) + delta
-        post.saveInBackground(block: { (success: Bool, error: Error?) in
-            completion(error)
-        })
+    class func updatePostLikes(user: PFUser, post: PFObject, delta: Int, completion: @escaping (_ error: Error?) -> Void) {
+        let like = PFObject(className: "PostLike")
+        like["post"] = post
+        like["user"] = user
+        
+        if delta == 1 {
+            like.saveInBackground(block: { (success: Bool, error: Error?) in
+                completion(error)
+            })
+        }
+        else {
+            let query = PFQuery(className: "PostLike")
+            query.whereKey("post", equalTo: post)
+            query.whereKey("user", equalTo: user)
+            query.limit = 1
+            query.findObjectsInBackground(block: { (queryObjs: [PFObject]?, error: Error?) in
+                if let queryObjs = queryObjs {
+                    if queryObjs.count == 1 {
+                        let obj = queryObjs[0]
+                        obj.deleteInBackground()
+                    }
+                    else {
+                        print("No like to unlike")
+                    }
+                }
+                else {
+                    print(error?.localizedDescription ?? "")
+                    print("Error liking post")
+                }
+                completion(error)
+            })
+        }
     }
     
     class func humanReadableDateFromDate(date: Date) -> String {

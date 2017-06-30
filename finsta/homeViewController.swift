@@ -153,8 +153,9 @@ class homeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 
     func likePostToggle(cell: feedTableViewCell, delta: Int) {
+        let user = PFUser.current()
         let post = posts[feedTableView.indexPath(for: cell)!.row]
-        Post.updatePostLikes(post: post, delta: delta) { (error: Error?) in
+        Post.updatePostLikes(user: user!, post: post, delta: delta) { (error: Error?) in
             print("Error updating likes")
         }
     }
