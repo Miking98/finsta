@@ -160,6 +160,7 @@ class commentsViewController: UIViewController, UITableViewDelegate, UITableView
             }
             else {
                 self.addCommentTextField.text = ""
+                self.postCommentButton.isEnabled = false
             }
             self.addCommentTextField.isUserInteractionEnabled = true
         }

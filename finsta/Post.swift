@@ -213,6 +213,10 @@ class Post: AnyObject {
     
     // Create a comment to a post
     class func createCommentOnPost(user: PFUser, post: PFObject, content: String, completion: @escaping (_ error: Error?) -> Void) {
+        if content == "" {
+            completion(nil)
+        }
+        
         let comment = PFObject(className: "Comment")
         comment["author"] = PFUser.current()
         comment["post"] = post

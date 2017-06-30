@@ -597,8 +597,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="User inputted caption" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N26-Jd-kp5">
-                                                    <rect key="frame" x="88" y="396" width="140" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="User inputted caption" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N26-Jd-kp5">
+                                                    <rect key="frame" x="88" y="396" width="275" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
@@ -1449,8 +1449,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ThQ-MI-bbn"/>
-        <segue reference="VyE-hG-uM0"/>
+        <segue reference="QFM-Xb-fPc"/>
+        <segue reference="DC5-7M-6en"/>
         <segue reference="nD5-WB-5XJ"/>
-        <segue reference="ntj-cs-G8d"/>
     </inferredMetricsTieBreakers>
 </document>
