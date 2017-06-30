@@ -241,7 +241,18 @@ class Post: AnyObject {
         post["likesCount"] = (post["likesCount"] as! Int) + delta
         if delta == 1 {
             like.saveInBackground(block: { (success: Bool, error: Error?) in
-                completion(error)
+                if success {
+                    post.saveInBackground(block: { (success: Bool, error: Error?) in
+                        if let error = error {
+                            print(error.localizedDescription)
+                            print("Error updating post likes count")
+                        }
+                        completion(error)
+                    })
+                }
+                else {
+                    completion(error)
+                }
             })
         }
         else {
@@ -254,16 +265,24 @@ class Post: AnyObject {
                     if queryObjs.count == 1 {
                         let obj = queryObjs[0]
                         obj.deleteInBackground()
+                        post.saveInBackground(block: { (success: Bool, error: Error?) in
+                            if let error = error {
+                                print(error.localizedDescription)
+                                print("Error updating post likes count")
+                            }
+                            completion(error)
+                        })
                     }
                     else {
                         print("No like to unlike")
+                        completion(error)
                     }
                 }
                 else {
                     print(error?.localizedDescription ?? "")
                     print("Error liking post")
+                    completion(error)
                 }
-                completion(error)
             })
         }
     }
