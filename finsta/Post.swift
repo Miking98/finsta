@@ -12,24 +12,28 @@ import Parse
 class Post: AnyObject {
     
     class func postUserImage(image: UIImage?, caption: String?, date: Date?, location: CLLocation?, withCompletion completion: PFBooleanResultBlock?) {
+        let user = PFUser.current()!
+        user["postsCount"] = (user["postsCount"] as? Int ?? 0) + 1
+        
         // Create Parse object PFObject
         let post = PFObject(className: "Post")
         post["media"] = getPFFileFromImage(image: image) // PFFile column type
-        post["author"] = PFUser.current() // Pointer column type that points to PFUser
+        post["author"] = user // Pointer column type that points to PFUser
         post["dateCreated"] = date ?? NSNull() // Date photo was taken
         post["location"] = location != nil ? Post.getGeoLocationFromCoords(location: location!) : NSNull()
         post["likesCount"] = 0
         post["commentsCount"] = 0
+        post["oldestCommentAuthor"] = user
+        post["oldestCommentContent"] = caption ?? NSNull()
+        post["commentsCount"] = 0
         
         // Save caption as first comment
         let comment = PFObject(className: "Comment")
-        comment["author"] = PFUser.current()
+        comment["author"] = user
         comment["post"] = post
         comment["content"] = caption ?? NSNull()
         comment["likesCount"] = 0
         
-        let user = PFUser.current()!
-        user["postsCount"] = (user["postsCount"] as! Int) + 1
         
         // Save post and caption (following function will save the object in Parse asynchronously)
         post.saveInBackground(block: { (success: Bool, error: Error?) in
@@ -69,6 +73,7 @@ class Post: AnyObject {
         let predicate = NSPredicate(format: "createdAt < %@", startDate as NSDate)
         let query = PFQuery(className: "Post", predicate: predicate)
         query.order(byDescending: "createdAt")
+        query.includeKey("oldestCommentAuthor")
         query.includeKey("author")
         query.limit = numberOfPosts
         
