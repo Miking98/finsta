@@ -162,8 +162,15 @@ class homeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func likePostToggle(cell: feedTableViewCell, delta: Int) {
         let user = PFUser.current()
         let post = posts[feedTableView.indexPath(for: cell)!.row]
+        // Update likes on client-side immediately
+        let currentLikes = Int(cell.likesLabel.text?.replacingOccurrences(of: " likes", with: "") ?? "0")!
+        cell.likesLabel.text = String(format: "%d likes", currentLikes + delta)
+        // Save like in database
         Post.updatePostLikes(user: user!, post: post, delta: delta) { (error: Error?) in
-            print("Error updating likes")
+            if let error = error {
+                print(error.localizedDescription)
+                print("Error updating likes")
+            }
         }
     }
     
