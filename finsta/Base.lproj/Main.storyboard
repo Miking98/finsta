@@ -537,12 +537,16 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="476"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ri-zO-YQx">
+                                                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ri-zO-YQx">
                                                     <rect key="frame" x="58" y="8" width="79" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <gestureRecognizers/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="NSu-Yc-gl1" appends="YES" id="0lA-kU-3kx"/>
+                                                    </connections>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TQi-UN-M0a" customClass="PFImageView">
                                                     <rect key="frame" x="0.0" y="49" width="375" height="284"/>
@@ -563,10 +567,14 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cRO-Ns-a6m" customClass="PFImageView">
+                                                <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cRO-Ns-a6m" customClass="PFImageView">
                                                     <rect key="frame" x="8" y="7" width="36" height="36"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.62202181159872327" green="0.63045105370622878" blue="0.67360009517766495" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <gestureRecognizers/>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="q4p-fJ-aTu" appends="YES" id="jqV-L7-ZiR"/>
+                                                    </connections>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="POST CREATED DATE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I58-Ub-zpy">
                                                     <rect key="frame" x="13" y="443" width="140" height="21"/>
@@ -658,9 +666,20 @@
                     <navigationItem key="navigationItem" id="x03-dT-gWj"/>
                     <connections>
                         <outlet property="feedTableView" destination="UJQ-gl-SDy" id="Krw-UO-tQb"/>
+                        <segue destination="FqX-A0-C7v" kind="show" identifier="homeToProfile" id="QFM-Xb-fPc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bTC-2Q-8nY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="NSu-Yc-gl1" userLabel="Username Tap Gesture Recognizer">
+                    <connections>
+                        <action selector="userTapGestureRecognizer:" destination="KXK-Zl-L0c" id="XJk-fw-siZ"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="q4p-fJ-aTu" userLabel="User Profile Image Tag Gesture Recognizer">
+                    <connections>
+                        <action selector="userProfileTapGestureRecognizer:" destination="KXK-Zl-L0c" id="jBK-iq-2Xz"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3023.1999999999998" y="422.33883058470769"/>
         </scene>
@@ -696,17 +715,25 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Owq-GS-YDE" customClass="PFImageView">
+                                                <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Owq-GS-YDE" customClass="PFImageView">
                                                     <rect key="frame" x="8" y="8" width="36" height="36"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.68431371360510695" green="0.69358709576294153" blue="0.74105726522842641" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <gestureRecognizers/>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="tEV-hB-Xqe" appends="YES" id="6og-My-Sa4"/>
+                                                    </connections>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A0y-1B-z7V">
+                                                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A0y-1B-z7V">
                                                     <rect key="frame" x="60" y="8" width="79" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <gestureRecognizers/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="72x-4e-R5y" appends="YES" id="LNH-ii-pZZ"/>
+                                                    </connections>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DATE CREATED" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LXD-sW-ED9">
                                                     <rect key="frame" x="60" y="97" width="112" height="21"/>
@@ -763,9 +790,20 @@
                         <outlet property="addCommentTextField" destination="U9E-oa-VBu" id="KGo-A7-9UV"/>
                         <outlet property="commentsTableView" destination="srW-IT-zfJ" id="KFJ-SO-YDg"/>
                         <outlet property="postCommentButton" destination="okD-Re-Pe9" id="Uuv-Oq-3NJ"/>
+                        <segue destination="FqX-A0-C7v" kind="show" identifier="commentsToProfile" id="ntj-cs-G8d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="buV-LI-O19" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="72x-4e-R5y" userLabel="Username Tap Gesture Recognizer">
+                    <connections>
+                        <action selector="usernameTapGestureRecognizer:" destination="yEZ-NC-l16" id="TTg-Ya-aRz"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="tEV-hB-Xqe" userLabel="User Profile Image Tap Gesture Recognizer">
+                    <connections>
+                        <action selector="userProfileImageTapGestureRecognizer:" destination="yEZ-NC-l16" id="rpf-d8-b1g"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3764" y="421.43928035982015"/>
         </scene>
@@ -1413,5 +1451,6 @@
         <segue reference="ThQ-MI-bbn"/>
         <segue reference="VyE-hG-uM0"/>
         <segue reference="nD5-WB-5XJ"/>
+        <segue reference="ntj-cs-G8d"/>
     </inferredMetricsTieBreakers>
 </document>

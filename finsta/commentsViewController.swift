@@ -166,6 +166,13 @@ class commentsViewController: UIViewController, UITableViewDelegate, UITableView
         // Reload comments
         self.viewDidLoad()
     }
+    
+    @IBAction func userProfileImageTapGestureRecognizer(_ sender: UITapGestureRecognizer) {
+        performSegue(withIdentifier: "commentsToProfile", sender: sender)
+    }
+    @IBAction func usernameTapGestureRecognizer(_ sender: UITapGestureRecognizer) {
+        performSegue(withIdentifier: "commentsToProfile", sender: sender)
+    }
 
     /*
     // MARK: - Navigation

@@ -174,6 +174,13 @@ class homeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    @IBAction func userProfileTapGestureRecognizer(_ sender: UITapGestureRecognizer) {
+        performSegue(withIdentifier: "homeToProfile", sender: sender)
+    }
+    @IBAction func userTapGestureRecognizer(_ sender: UITapGestureRecognizer) {
+        performSegue(withIdentifier: "homeToProfile", sender: sender)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "postToComments" || segue.identifier == "postCommentButtonToComments" {
             // Get parent Table View Cell
