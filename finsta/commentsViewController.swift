@@ -71,7 +71,7 @@ class commentsViewController: UIViewController, UITableViewDelegate, UITableView
         let author = comment["author"] as! PFUser
         cell.usernameLabel.text = author.username!
         cell.contentTextView.text = comment["content"] as? String
-        //cell.createdDateLabel.text = Post.instagramStyleDateFromDate(date: (comment.createdAt!)).uppercased()
+        cell.dateCreatedLabel.text = Post.instagramStyleDateFromDate(date: (comment.createdAt!)).uppercased()
         cell.userProfileImageFile = author["profileImage"] as? PFFile
         
         return cell

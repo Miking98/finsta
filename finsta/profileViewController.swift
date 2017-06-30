@@ -114,6 +114,14 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
             vc.delegate = self
             vc.user = user
         }
+        else if segue.identifier == "profileToPostDetail" {
+            let cell = sender as! profilePostCollectionViewCell
+            let indexPath = postsCollectionView.indexPath(for: cell)!
+            let post = userPosts[indexPath.row]
+            let vc = segue.destination as! homeViewController
+            vc.specificPost = post
+        }
+        
     }
     
     func updateUserInformation() {

@@ -500,7 +500,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cRO-Ns-a6m" customClass="PFImageView">
-                                                    <rect key="frame" x="8" y="5" width="40" height="40"/>
+                                                    <rect key="frame" x="8" y="7" width="36" height="36"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.62202181159872327" green="0.63045105370622878" blue="0.67360009517766495" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </imageView>
@@ -639,7 +639,7 @@
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Owq-GS-YDE" customClass="PFImageView">
-                                                    <rect key="frame" x="8" y="8" width="40" height="40"/>
+                                                    <rect key="frame" x="8" y="8" width="36" height="36"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.68431371360510695" green="0.69358709576294153" blue="0.74105726522842641" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </imageView>
@@ -650,10 +650,18 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DATE CREATED" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LXD-sW-ED9">
+                                                    <rect key="frame" x="60" y="97" width="112" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="contentTextView" destination="gFa-1y-hB0" id="n1H-bh-WaF"/>
+                                            <outlet property="dateCreatedLabel" destination="LXD-sW-ED9" id="gEa-rC-crW"/>
                                             <outlet property="userProfileImageView" destination="Owq-GS-YDE" id="Ang-de-6Vw"/>
                                             <outlet property="usernameLabel" destination="A0y-1B-z7V" id="UZr-rf-Sfe"/>
                                         </connections>
@@ -844,11 +852,13 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yo6-2g-YWm" customClass="PFImageView">
                                                     <rect key="frame" x="0.0" y="0.0" width="124" height="123"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <gestureRecognizers/>
                                                 </imageView>
                                             </subviews>
                                         </view>
                                         <connections>
                                             <outlet property="postImageView" destination="yo6-2g-YWm" id="0xq-c1-ygh"/>
+                                            <segue destination="KXK-Zl-L0c" kind="show" id="DC5-7M-6en"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -1198,7 +1208,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B8l-U7-ALe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3887.1999999999998" y="1190.5547226386807"/>
+            <point key="canvasLocation" x="2185" y="1970"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="oAq-Vl-mQQ">
@@ -1297,6 +1307,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ThQ-MI-bbn"/>
+        <segue reference="DC5-7M-6en"/>
         <segue reference="Y9W-xG-OI9"/>
     </inferredMetricsTieBreakers>
 </document>

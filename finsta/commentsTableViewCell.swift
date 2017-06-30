@@ -15,6 +15,7 @@ class commentsTableViewCell: UITableViewCell {
     @IBOutlet weak var userProfileImageView: PFImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var contentTextView: UITextView!
+    @IBOutlet weak var dateCreatedLabel: UILabel!
     
     var userProfileImageFile: PFFile! {
         didSet {

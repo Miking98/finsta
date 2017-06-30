@@ -18,6 +18,7 @@ class homeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var feedTableView: UITableView!
     
+    var specificPost: PFObject?
     var posts: [PFObject] = []
     let NUMBER_OF_POSTS_FETCH_AT_ONCE = 1
     
@@ -45,9 +46,16 @@ class homeViewController: UIViewController, UITableViewDelegate, UITableViewData
         insets.bottom += InfiniteScrollActivityView.defaultHeight
         feedTableView.contentInset = insets
         
-        // Fetch 20 most recent posts
-        fetchPosts(startDate: Date(), numberOfPosts: NUMBER_OF_POSTS_FETCH_AT_ONCE, completion: { (error: Error?) -> Void in
-        })
+        // Check if displaying one specific post, or general home feed
+        if specificPost != nil {
+            self.posts = [ specificPost! ]
+            self.feedTableView.reloadData()
+        }
+        else {
+            // Fetch 20 most recent posts
+            fetchPosts(startDate: Date(), numberOfPosts: NUMBER_OF_POSTS_FETCH_AT_ONCE, completion: { (error: Error?) -> Void in
+            })
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -79,24 +87,27 @@ class homeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if (!feedIsLoadingMoreData) {
-            // Calculate the position of one screen length before the bottom of the results
-            let scrollViewContentHeight = feedTableView.contentSize.height // Total height of table with all elements filled in (off screen too)
-            let scrollOffsetThreshold = scrollViewContentHeight - feedTableView.bounds.size.height // Bounds is height of table currently on screen
-                
-            // When the user has scrolled past the threshold, start requesting
-            if (scrollView.contentOffset.y > scrollOffsetThreshold && feedTableView.isDragging && posts.count > 0) { // ContentOffset is how far user has scrolled the table view
-                feedIsLoadingMoreData = true
-                // Update position of loadingMoreView, and start loading indicator
-                let frame = CGRect(x: 0, y: feedTableView.contentSize.height, width: feedTableView.bounds.size.width, height: InfiniteScrollActivityView.defaultHeight)
-                loadingMoreView?.frame = frame
-                loadingMoreView!.startAnimating()
-                //Fetch next posts
-                let mostAncientPostAlreadyFetchedDate = posts[posts.count-1].createdAt!
-                fetchPosts(startDate: mostAncientPostAlreadyFetchedDate, numberOfPosts: NUMBER_OF_POSTS_FETCH_AT_ONCE, append: true, completion: { (error: Error?) -> Void in
-                    self.feedIsLoadingMoreData = false
-                    self.loadingMoreView!.stopAnimating()
-                })
+        // Infinite scroll for home feed, not for post detail view
+        if (specificPost == nil) {
+            if (!feedIsLoadingMoreData) {
+                // Calculate the position of one screen length before the bottom of the results
+                let scrollViewContentHeight = feedTableView.contentSize.height // Total height of table with all elements filled in (off screen too)
+                let scrollOffsetThreshold = scrollViewContentHeight - feedTableView.bounds.size.height // Bounds is height of table currently on screen
+                    
+                // When the user has scrolled past the threshold, start requesting
+                if (scrollView.contentOffset.y > scrollOffsetThreshold && feedTableView.isDragging && posts.count > 0) { // ContentOffset is how far user has scrolled the table view
+                    feedIsLoadingMoreData = true
+                    // Update position of loadingMoreView, and start loading indicator
+                    let frame = CGRect(x: 0, y: feedTableView.contentSize.height, width: feedTableView.bounds.size.width, height: InfiniteScrollActivityView.defaultHeight)
+                    loadingMoreView?.frame = frame
+                    loadingMoreView!.startAnimating()
+                    //Fetch next posts
+                    let mostAncientPostAlreadyFetchedDate = posts[posts.count-1].createdAt!
+                    fetchPosts(startDate: mostAncientPostAlreadyFetchedDate, numberOfPosts: NUMBER_OF_POSTS_FETCH_AT_ONCE, append: true, completion: { (error: Error?) -> Void in
+                        self.feedIsLoadingMoreData = false
+                        self.loadingMoreView!.stopAnimating()
+                    })
+                }
             }
         }
     }
